@@ -1,0 +1,1359 @@
+body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, li, a, p, h1, h2, h3, h4,h5, h6, i, b, textarea, button, input, select,option, figure, figcaption {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-style: normal;
+    text-decoration: none;
+    border: none;
+    -webkit-tap-highlight-color:transparent;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Microsoft Yahei",sans-serif!important;
+}
+*:focus{
+    outline: none;
+}
+body{
+    padding-top: 50px;
+    font-size: 16px;
+
+}
+textarea { -webkit-appearance: none;resize:none}
+button{
+    padding: 0 16px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 5px;
+}
+.padding-bottom{
+    padding-bottom:60px;
+    float: left;
+    width: 100%;
+}
+.btn{
+    width: 60%;
+    background-color: rgb(72, 175, 249);
+    color: #fff;
+    text-align: center;
+    float: left;
+    padding: 10px 0;
+    border-radius: 14px;
+    margin: 20px 20%;
+}
+.type{
+    background-color: #e6f6fd;
+    width: 25px;
+    height: 25px;
+    line-height: 24px;
+    border-radius: 50%;
+    border:1px solid #4aa1ec;
+    color: #4aa1ec;
+    margin-left: 8px;
+    text-align: center;
+    display: inline-block;
+    box-sizing: border-box;
+}
+/* 头部 */
+.fix-top{
+    position: fixed;
+    top: 0;
+    left:0;
+    right: 0;
+    height:50px;
+    float: left;
+    width: 100%;
+    background-color: #54c31d;
+    border-bottom: 1px solid #e4e4e4;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    line-height: 50px;
+    z-index:9999999
+}
+.fix-top i{
+    position: absolute;
+    left:10px;
+    font-size: 20px;
+}
+/* 老师端最底部按钮 */
+.fix-bottom{
+    position: fixed;
+    bottom: 0;
+    left:0;
+    right: 0;
+    width: 100%;
+    z-index: 99;
+    background-color: #fff;
+    box-sizing: border-box;
+    border-top:1px solid #e4e4e4;
+    text-align: center;
+    font-size: 12px;
+    color: #8d8d8d;
+}
+.fix-tea-btn{
+    width: 50%;
+    float: left;
+    height: 40px;
+    padding: 5px 0;
+}
+.fix-tea-btn.active,
+.fix-tea-btn.active i{
+    color: #53c41c;
+}
+.fix-tea-btn i{
+    color: #bebebe;
+    font-size: 24px;
+    margin-top: 10px;
+}
+/* 学生端最底部按钮 */
+.fix-stu-btn{
+    width: 33.33%;
+    float: left;
+    height: 40px;
+    padding: 5px 0;
+}
+.fix-stu-btn.active,
+.fix-stu-btn.active i{
+    color: #53c41c;
+}
+.fix-stu-btn i{
+    color: #bebebe;
+    font-size: 24px;
+    margin-top: 10px;
+}
+/* 教师端 */
+/* 我的 */
+.owner-list{
+    width: 100%;
+    float: left;
+}
+.owner-list-box{
+    border-bottom: 1px solid #e4e4e4;
+    border-top: 1px solid #e4e4e4;
+    display: table;
+    width: 92%;
+    padding:0 4%;
+    height: 60px;
+    margin: 5px 0;
+}
+.owner-list-box:first-child{
+    border-top: none;
+}
+.owner-list-box i,
+.owner-list-box .touxiang,
+.owner-list-box span{
+    display: table-cell;
+    vertical-align: middle;
+    line-height: 60px;
+    height: 60px;
+}
+.owner-list-box span.right{
+    width: 40px;
+    color: #8d8d8d;
+    font-size: 15px;
+    text-align: right;
+    padding-right: 4px;
+}
+.owner-list-box span.right.msgNum{
+    color: red;
+}
+.owner-list-box .touxiang{
+    width: 70px;
+    overflow: hidden;
+}
+.owner-list-box .touxiang img{
+    float: left;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #e4e4e4;
+}
+.owner-list-box i{
+}
+.owner-list-box i:first-child{
+    font-size: 30px;
+    width: 40px;
+}
+.owner-list-box span.num{
+    background-color: #54c31d;
+    height: 24px;
+    line-height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    float: right;
+    text-align: center;
+    margin-top: 18px;
+    color: #fff;
+}
+.owner-list-box i.message{
+    color: #12c3c6;
+}
+.owner-list-box i.myHome{
+    color: #55c31b;
+}
+.owner-list-box i.yellow{
+    color: #d2af05;
+}
+.owner-list-box i:last-child{
+    width: 20px;
+}
+.owner-list-box span.weixin-name{
+    font-weight: bold;
+}
+
+/* 我的主页 */
+.homeTouxiang{
+    text-align: center;
+    padding: 10px 0;
+}
+.homeTouxiang img{
+    width: 50%;
+    border-radius: 50%;
+    border: 1px solid #e4e4e4;
+}
+.teacher-name{
+    font-size: 20px;
+    letter-spacing:3px;
+    font-weight: bold;
+}
+.teacher-name,
+.teacher-des{
+    text-align: center;
+    width: 100%;
+    padding:8px 0;
+}
+.teacher-des{
+    margin-bottom: 20px;
+}
+.content-box{
+    width: 100%;
+    margin: 6px 0;
+    float: left;
+}
+.content-box p.title{
+    border-left: 5px solid #54c31d;
+    padding-left: 5px;
+    color: #979797;
+}
+.content-box p{
+    position: relative;
+}
+.content-box p button{
+    position: absolute;
+    right: 0;
+    top: -5px;
+}
+.content-box p button.edit{
+    border: 1px solid #e4e4e4;
+    background-color: #f8f8f8;
+}
+.content-box p button.save{
+    border: 1px solid #e4e4e4;
+    background-color: #1aab1c;
+    color: #fff;
+}
+.noEvaluate{
+    text-align: center;
+    padding: 20px 0;
+    color: #bebebe;
+    float: left;
+    width: 100%;
+}
+.noEvaluate i.icon-hua{
+    color:#fd4a51;
+    font-size: 30px;
+}
+.noEvaluate p{
+    margin: 20px 0 0 0;
+}
+.uoloadImg{
+    float: left;
+    width: 100%;
+    padding: 20px 0;
+    box-sizing: border-box;
+    border-spacing:14px;
+    background-color: #fff;
+}
+.addImg{
+    border: 1px solid #e4e4e4;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    float: left;
+}
+.addImg i.icon-jia{
+    font-size: 60px;
+    color: #e4e4e4;
+    margin-top:17px;
+    margin-left: 20px;
+    float: left;
+}
+.addImg img{
+    width: 90%;
+    height: 90%;
+    margin-left: 5%;
+    margin-top: 5%;
+    float: left;
+}
+.addImg i.icon-shanchu{
+    position: absolute;
+    font-size: 20px;
+    top: -10px;
+    right: -10px;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 1px solid #e4e4e4;
+    box-shadow: 2px 2px 2px #888888;
+    z-index: 2;
+}
+.uploadInput{
+    display: none;
+}
+
+/* 消息记录 */
+.noMsg{
+    text-align: center;
+    color: #989898;
+}
+.noMsg img{
+    width: 50%;
+    margin: 100px 0 30px 0;
+}
+.noMsg p{
+}
+
+
+/* 我的预约 */
+.order-list{
+    float: left;
+    width: 100%;
+}
+.order-list .list-box:first-child{
+    margin-top: 0;
+}
+.order-list .list-box{
+    float: left;
+    width: 100%;
+    background-color: #e8e8e8;
+    padding:10px 0;
+    margin: 5px 0;
+}
+.list-box-top,
+.list-box-bottom{
+    float: left;
+    width: 100%;
+    position: relative;
+    line-height: 25px;
+    margin: 5px 0;
+}
+.list-box-top span.time{
+    position: relative;
+    background-color: #555;
+    border-radius: 0 12px 12px 0;
+    font-size: 16px;
+    color: #fff;
+    float: left;
+    padding: 0 14px;
+}
+.list-box-top span.className{
+    float: left;
+    margin-left: 12px;
+}
+.list-box-top span.address{
+    float: right;
+    font-size: 14px;
+    color: #bebebe;
+    margin-right: 8px;
+}
+.list-box-bottom {
+    color: #bebebe;
+    font-size: 14px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+.list-box-bottom span.numNow{
+    background-color: #444;
+    color: #fff;
+    border-radius: 10px;
+    padding: 0 8px;
+}
+.list-box-bottom span.numCount{
+
+}
+.list-box-bottom span.difficulty{
+
+}
+.list-box-bottom span.timeLength{
+
+}
+.list-box-bottom span.details{
+    color: #444;
+    float: right;
+    border:1px solid #444;
+    padding: 0 8px;
+    line-height: 25px;
+    font-size: 14px;
+    border-radius: 4px;
+}
+.order-details{
+    background-color: #f6f6f6;
+    float: left;
+    width: 94%;
+    margin:5px 3%;
+    padding:10px;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+.order-details .order-details-top{
+    display: table;
+    width: 100%;
+}
+.order-details .table-cell{
+    display: table-cell;
+    vertical-align: middle;
+}
+.order-details .table-cell.table-cellLeft{
+    /* width: 100%; */
+}
+.order-details .table-cell.table-cellRight{
+    width: 120px;
+}
+.order-details .table-cell.table-cellRight span{
+    margin-bottom: 5px;
+}
+.order-details-top{
+    /* line-height: 30px; */
+}
+.order-details-top .touxiang{
+    width: 30px;
+    border-radius: 50%;
+    float: left;
+}
+.order-details-top span,
+.order-details-top a.btn-phone{
+    float: left;
+}
+.order-details-top span.name{
+    line-height: 30px;
+    margin-left: 10px;
+}
+.order-details-top span.order{
+    background-color: #d2b10b;
+    color: #fff;
+    border-radius: 10px;
+    padding:0 8px;
+    font-size: 12px;
+    margin-top: 7px;
+    margin-left: 4px;
+}
+.order-details-top a.btn-phone,
+.order-details-top span.btn-pinglun,
+.order-details-top span.btn-qiandao,
+.order-details-top span.btn-cancel{
+    float: right;
+    border: 1px solid #e4e4e4;
+    color: #aaa;
+    padding:0 8px;
+    margin-right: 8px;
+    line-height: 30px;
+    font-size: 14px;
+    border-radius: 4px;
+}
+.order-details-top span.btn-phone{}
+.order-details-top span.btn-pinglun{
+
+    background-color: #1aab1c;
+    color: #fff;
+}
+.order-details-top span.btn-qiandaobtn-phone,
+.order-details-top span.btn-cancel{
+    color: #1aab1c;
+    border-color:#1aab1c
+}
+.order-details .dianping{
+    background-color: #fff;
+    float: left;
+    width: 96%;
+    margin: 8px 2%;
+    border-radius: 4px;
+    border: 1px solid #e4e4e4;
+    padding:10px;
+    box-sizing: border-box;
+}
+.order-details .dianping .title{
+    border-left: 5px solid #54c31d;
+    padding-left: 5px;
+    color: #979797;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+.order-details .dianping .title .btn-writeDianping{
+    position: absolute;
+    right:10px;
+    top:0;
+    font-size: 14px;
+    color: #1aab1c;
+}
+.order-details .dianping .title .btn-writeDianping i{
+    font-size: 20px;
+}
+.ketangPhone{
+    float: left;
+    width: 94%;
+    margin: 10px 3%;
+}
+.ketangPhone .title{
+    border-left: 5px solid #54c31d;
+    padding-left: 5px;
+    color: #979797;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+.ketangPhone .title button{
+    float: right;
+}
+.ketangPhone .title .uploadEleImg{
+    position: absolute;
+    right: 0;
+    top: -5px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 5px;
+    width: 60px;
+    background-color: #fff;
+    border: 1px solid #e4e4e4;
+    text-align: center;
+    font-size: 14px;
+    color: #000;
+}
+/* .ketangPhone .title button{
+    position: absolute;
+    right: 0;
+    top: -5px;
+} */
+.ketangPhone .title button.add{
+    border: 1px solid #e4e4e4;
+    background-color: #f8f8f8;
+}
+.haveEvaluate{
+    padding: 20px 0;
+    color: #bebebe;
+    float: left;
+    width: 94%;
+    margin: 2px 3%;
+}
+.haveEvaluate-top{
+    float: left;
+    width: 100%;
+    font-size: 12px;
+}
+.haveEvaluate-top img{
+    width: 25px;
+    border-radius: 50%;
+    float: left;
+}
+.haveEvaluate-top i{
+    color: #1aab1c;
+    float: right;
+    font-size: 20px;
+}
+.haveEvaluate-top span{
+    line-height: 25px;
+    margin-left: 5px;
+}
+.haveEvaluate-content{
+    float: left;
+    width: 100%;
+    font-size: 14px;
+    box-sizing: border-box;
+    padding:10px 10px 10px 30px
+}
+.dianpingPhoneOwner {
+    border-top: 1px solid #e4e4e4;
+    float: left;
+    width: 100%;
+    padding:18px 0 10px 0
+}
+.dianpingPhoneOwner .title{
+    border-left: 5px solid #54c31d;
+    padding-left: 5px;
+    color: #979797;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    height: 21px;
+    line-height: 21px;
+}
+.dianpingPhoneOwner .title .uploadEleImg{
+    position: absolute;
+    right: 0;
+    top: -5px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 5px;
+    width: 60px;
+    background-color: #f8f8f8;
+    border: 1px solid #e4e4e4;
+    text-align: center;
+    font-size: 14px;
+    color: #000;
+}
+.dianpingPhoneOwner .title button.add{
+    border: 1px solid #e4e4e4;
+    background-color: #f8f8f8;
+}
+.dianpingPhoneOwner .img,
+.ketangPhone .img{
+    float: left;
+    width: 96%;
+    padding:10px 2% 0 2%;
+    background-color: #f6f6f6;
+    margin: 10px 0;
+}
+.dianpingPhoneOwner .img img:last-child,
+.ketangPhone .img img:last-child{
+    margin-right: 0
+}
+.dianpingPhoneOwner .img img,
+.ketangPhone .img img{
+    border: 1px solid #e4e4e4;
+    width: 80px;
+    height: 80px;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.editWord{
+    position: fixed;
+    bottom: 50px;
+    background-color: #fff;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 999;
+}
+.editWord textarea{
+    width: 90%;
+    margin: 8px 5% 0 5%;
+    border-bottom: 1px solid #e4e4e4;
+    resize:none;
+}
+.editWord i{
+    float: right;
+    background-color: #8c8c8c;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 30px;
+    color: #fff;
+}
+/* 学生端 */
+/* 预约 */
+.stuSearch{
+    height: 30px;
+    float: left;
+    width: 100%;
+}
+.stuSearch select{
+    font-size: 14px;
+    background-color: transparent;
+    color: #979797;
+    text-align: center;
+    text-align-last: center;
+}
+.stuSearch1{
+    height: 30px;
+    float: left;
+    width: 100%;
+}
+.stuSearch1 select{
+    font-size: 30px;
+    background-color: transparent;
+    color: #389d0f;
+    text-align: center;
+    text-align-last: center;
+}
+.stu-order-list{
+    display: table;
+    width: 100%;
+    background-color: #fff;
+}
+.stu-order-list2 .stu-order-list-right{
+    padding:10px 20px;
+    box-sizing: border-box;
+}
+.stu-order-list-left,
+.stu-order-list-right{
+    display: table-cell;
+    vertical-align: middle;
+}
+.stu-order-list-left{
+    width: 90px;
+    position: relative;
+}
+.stu-order-list-left span.round-half{
+    background-color: #389d0f;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    left: -5px;
+    top: 44px;
+}
+.stu-order-list-left span.inline{
+    border-top:1px solid #389d0f;
+    width: 20px;
+    float: left;
+    margin-top: 25px;
+}
+.stu-order-list-left span.time{
+    border:1px solid #389d0f;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    float: left;
+    text-align: center;
+}
+.stu-order-list-right{
+    border-bottom: 1px solid #e4e4e4;
+    padding:10px 0;
+}
+.stu-order-list-right .stu-order-list-right-table{
+    display: table;
+    width: 100%;
+}
+.stu-order-list-right .stu-order-list-right-table .stu-order-list-right-img,
+.stu-order-list-right .stu-order-list-right-table .stu-order-list-right-content,
+.stu-order-list-right .stu-order-list-right-table .stu-order-list-right-btn{
+    display: table-cell;
+    vertical-align: middle;
+}
+.stu-order-list-right .stu-order-list-right-table .stu-order-list-right-img{
+    width: 70px;
+}
+.stu-order-list-right .stu-order-list-right-table .stu-order-list-right-img img{
+    width: 80px;
+    height:80px;
+    border-radius: 50%;
+    float: left;
+}
+.stu-order-list-right .stu-order-list-right-table .stu-order-list-right-btn{
+    width: 70px;
+}
+.stu-order-list-right .stu-order-list-right-table .stu-order-list-right-btn span{
+    border: 1px solid #e4e4e4;
+    padding: 0 14px;
+    height: 30px;
+    line-height: 30px;
+    float: left;
+    color: #e4e4e4;
+}
+.stu-order-list-right .stu-order-list-right-table .stu-order-list-right-btn.isActive span{
+    color: #389d0f;
+    border-color: #389d0f;
+}
+
+.stu-order-list-right .stu-order-list-right-table .stu-order-list-right-content{
+    color: #979797;
+    padding-left: 8px;
+    font-size: 14px;
+}
+.stu-order-list-right .stu-order-list-right-table .stu-order-list-right-content p{
+    padding:2px 0
+}
+.stu-order-list-right .stu-order-list-right-table .stu-order-list-right-content p.className{
+    color: #000;
+}
+/* 暂无课程 */
+.noClass{
+    text-align: center;
+}
+.noClass img{
+    width: 30%;
+}
+.noClass .title{
+    padding:10px 0;
+    font-size: 14px;
+}
+.noClass .noClass-bottom-line{
+    width: 92%;
+    float: left;
+    margin: 20px 4%;
+    border-bottom: 1px solid #e4e4e4;
+    position: relative;
+    z-index: 1;
+}
+.noClass .noClass-bottom-line span{
+    z-index: 2;
+    position: absolute;
+    width: 150px;
+    background-color: #f6f6f6;
+    left: 50%;
+    margin-left: -75px;
+    top: 50%;
+    height: 30px;
+    line-height: 30px;
+    margin-top: -15px;
+    font-size: 14px;
+    color: #1aab1c;
+}
+.noClass-bottom{
+    float: left;
+    width: 100%;
+    text-align: center;
+    margin: 5px 0;
+    height: 90px;
+    position: relative;
+}
+.noClass-bottom .round{
+    border:1px solid #1aab1c;
+    border-radius: 50%;
+    height: 90px;
+    width: 90px;
+    margin: 0 auto;
+    padding: 7px 0;
+    box-sizing: border-box;
+    display: table-cell;
+    vertical-align: middle;
+    position: absolute;
+    left: 50%;
+    margin-left: -45px;
+}
+.noClass-bottom .round2{
+    padding:20px 0
+}
+.noClass-bottom .round p{
+    text-align: center;
+    line-height: 25px;
+}
+.noClass-bottom .round p:first-child{
+    color: #8c8c8c;
+    font-size: 14px;
+}
+.noClass-bottom .round p.data{
+    color: #1aab1c;
+    font-weight: bold;
+    font-size: 14px;
+}
+.noClass-bottom .round p:last-child{
+    color: #1aab1c;
+    font-size: 13px;
+}
+
+
+
+/* 老师详情 */
+.teacher-plNum{
+    text-align: center;
+    padding:10px 0
+}
+.teacher-plNum i{
+    color: #fd4a51;
+    font-size: 16px;
+}
+.teacher-plNum span{
+    color: #64b733;
+    font-size: 14px;
+}
+.teacher-plNum2{
+    font-size: 14px;
+    color: #434343;
+}
+
+.stuTeacherDetails{
+    width: 220px;
+    margin: 10px;
+    padding: 4px 10px;
+    display: inline-block;
+}
+.stuTeacherDetails .stu-order-list-right{
+    width: 100%;
+    float: left;
+}
+.stuTeacherDetails .stu-order-list-right .stu-order-list-right-table .stu-order-list-right-img{
+    width: 50px;
+}
+.stuTeacherDetails .stu-order-list-right .stu-order-list-right-table .stu-order-list-right-btn{
+    width: 20px;
+}
+.stuTeacherDetails .stu-order-list-right .stu-order-list-right-table .stu-order-list-right-img img{
+    width: 50px;
+    height: 50px;
+}
+.stuTeacherDetails .stu-order-list-right{
+    border: none;
+}
+.stuTeacherDetails-s{
+    overflow-x: auto;
+    /* float: left; */
+    white-space: nowrap;
+}
+.content-box2{
+    margin: 0;
+}
+.content-box2 .content-box2-title{
+    padding-bottom: 10px;
+    width: 100%;
+    background-color: #fff;
+}
+.bgfff{
+    float: left;
+    width: 100%;
+    background-color: #fff;
+}
+
+/* 教师评价 */
+.stuEvaluateTea{
+    text-align: center;
+    padding: 10px 0;
+}
+.stuEvaluateTea img{
+    width: 25%;
+    border-radius: 50%;
+    border: 1px solid #e4e4e4;
+}
+.stuEvaluateTea-teacher-name{
+    font-size: 16px;
+    letter-spacing:3px;
+    text-align: center;
+    width: 100%;
+    padding:8px 0;
+    float: left;
+    border-bottom: 1px solid #ececec;
+}
+.stuEvaluateTea-word{
+    border-top: 1px solid #ececec;
+    background-color: #fff;
+    float: left;
+    width: 100%;
+    padding:30px 10px;
+    box-sizing: border-box;
+    margin: 15px auto;
+    text-align: center;
+}
+.stuEvaluateTea-word2{
+    margin: 0;
+}
+.stuEvaluateTea-word textarea{
+    border: 1px solid #ececec;
+    width: 80%;
+    padding:10px;
+    box-sizing: border-box;
+}
+
+/* 预约详情 */
+.studetails-title{
+    background-color: #fff;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    padding:0 14px;
+    box-sizing: border-box;
+    border-top: 1px solid #ececec;
+    border-bottom: 1px solid #ececec;
+}
+.studetails-title span.title{
+    font-weight: bold;
+}
+.studetails-title .keshiTimes{
+    float: right;
+    color: red;
+}
+.studetails-xiwei{
+    width: 100%;
+    float: left;
+    padding:8px 14px;
+    box-sizing: border-box;
+}
+.studetails-xiwei span{
+    background-color: #444;
+    color: #fff;
+    border-radius: 10px;
+    padding: 0 8px;
+    font-size: 14px;
+    float: right;
+}
+.studetails-content{
+    background-color: #fff;
+    width: 100%;
+    float: left;
+    padding:0 14px;
+    box-sizing: border-box;
+    border-top: 1px solid #ececec;
+    font-size: 14px;
+}
+.studetails-content .studetails-content-li{
+    border-bottom: 1px solid #ececec;
+    height: 50px;
+    line-height: 50px;
+}
+.studetails-content .studetails-content-li i.icon-dizhi,
+.studetails-content .studetails-content-li i.icon-keshi_m{
+    float: left;
+    color: #838383;
+    font-size: 20px;
+}
+.studetails-content .studetails-content-li span.time{
+    float: left;
+    color: #838383;
+    margin-left: 10px;
+}
+.studetails-content .studetails-content-li span.dataTime{
+    float: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.studetails-content .studetails-content-li span.dataTime2{
+    max-width: 55%;
+}
+.studetails-content .studetails-content-li i.icon-iconfontjiantou6{
+    float: right;
+    margin-left: 5px;
+}
+.studetails-content3{
+    border-top: 1px solid #ececec;
+}
+.studetails-content2{
+    float: left;
+    width: 100%;
+    background-color: #fff;
+    padding: 9px 0;
+    font-size: 16px;
+    border-bottom: 1px solid #ececec;
+}
+.studetails-content2 p.title{
+    border-left: 5px solid #54c31d;
+    padding-left: 9px;
+    color: #979797;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    float: left;
+    width: 100%;
+}
+.studetails-content-teacher{
+    width: 90%;
+    margin: 10px 5%;
+    float: left;
+    background-color: #fff;
+    box-sizing: border-box;
+    padding:10px 6px;
+    line-height: 40px;
+}
+.studetails-content-teacher img{
+    border-radius: 50%;
+    width: 40px;
+    float: left;
+    margin-right: 15px;
+}
+.studetails-content-teacher .teacherName{
+    font-size: 14px;
+}
+.studetails-content-teacher .chakanbtn{
+    float: right;
+    border: 1px solid #e4e4e4;
+    color: #aaa;
+    padding: 0 8px;
+    margin-right: 8px;
+    line-height: 30px;
+    font-size: 14px;
+    border-radius: 4px;
+    color: #1aab1c;
+    border-color: #1aab1c;
+    margin-top: 5px;
+}
+.studetails-content-classContont{
+    font-size: 14px;
+    float: left;
+    width: 100%;
+    background-color: #fff;
+    padding:10px 14px;
+    box-sizing: border-box;
+}
+.bottom-order-btn{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 99;
+    background-color: #1aab1c;
+    box-sizing: border-box;
+    border-top: 1px solid #e4e4e4;
+    text-align: center;
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+}
+.bottom-order-btn2{
+    background-color: #bebebe;
+}
+.tishiBox{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .2);
+    z-index: 100;
+}
+.tishiContent{
+    position: fixed;
+    height: 150px;
+    background-color: #fff;
+    width: 60%;
+    left: 20%;
+    top: 50%;
+    margin-top: -125px;
+    z-index: 101;
+    border-radius: 4px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.tishiContent i.icon-guanbi{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 14px;
+
+}
+.tishiContent-word{
+    padding: 30px 5px;
+    font-size: 13px;
+}
+.msgContent{
+    position: fixed;
+    height: 400px;
+    background-color: #fff;
+    width: 80%;
+    left: 10%;
+    top: 50%;
+    margin-top: -200px;
+    z-index: 101;
+    border-radius: 4px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.msgContent i.icon-guanbi{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 14px;
+}
+.msgContent-word{
+    padding: 30px 5px;
+    font-size: 13px;
+    height: calc(100% - 80px);
+    overflow: auto
+}
+.msgContent-word p{
+  float: left;
+  width: 100%;
+  text-align: right
+}
+.isSure-btn{
+    width: 100%;
+}
+.isSure-btn span{
+    width: 30%;
+    float: left;
+    margin: 0 10%;
+    text-align: center;
+    box-sizing: border-box;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 6px;
+}
+.isSure-btn span:first-child{
+    border: 1px solid #e4e4e4;
+}
+.isSure-btn span:last-child{
+    background-color: #1aab1c;
+    color: #fff;
+}
+.tabs-top{
+    float: left;
+    width: 100%;
+}
+.tabs-top span{
+    float: left;
+    width: 33.33%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.tabs-top span.active{
+    border-bottom: 2px solid #1aab1c;
+    color: #1aab1c;
+}
+.myCourse-left {
+    width: 180px;
+}
+.myCourse-left span.round-half{
+    background-color: #e4e4e4;
+}
+.myCourse-left span.time{
+    border: 1px solid #e4e4e4;
+    color: #aaa;
+    margin-top: 10px;
+    font-size: 14px;
+}
+.myCourse-left span.data{
+    border: 1px solid #e4e4e4;
+    color: #aaa;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    float: left;
+    text-align: center;
+}
+.myCourse-left span.inline{
+    margin-top: 35px;
+    border-color: #e4e4e4;
+}
+.myCourseDetails-content{
+    padding: 0;
+    margin-bottom: 15px;
+}
+.myCourseDetails-content .studetails-content-li{
+    padding: 0 14px;
+}
+.myCourseDetails-content .studetails-content-li span.time{
+    margin-left: 0;
+}
+.myCourseDetails-content .studetails-content-li span.dataTime i.className{
+    font-weight: bold;
+}
+.myCourseDetails-content .studetails-content-li span.dataTime i.round{
+    border-radius: 10px;
+    padding: 1px 8px;
+    font-size: 14px;
+    border: 1px solid #aaa;
+    margin-left: 5px;
+}
+.myCourseDetails-content .studetails-content-li span.dataTime .touxiang{
+    width: 30px;
+    border-radius: 50%;
+    position: relative;
+    top: 10px;
+}
+.myCourseDetails-details{
+    width: 100%;
+    margin: 5px 0;
+    padding: 0;
+}
+.myCourseDetails-details .dianping{
+    width: 100%;
+    margin: 8px 0;
+    border: none;
+}
+
+.myCourseDetails-editWord{
+    bottom: 0;
+}
+
+.haveMsg{
+    float: left;
+    width: 100%;
+    font-size: 14px;
+    margin:12px 0;
+}
+.haveMsg p{
+    border-bottom: 1px dashed #bebebe;
+    box-sizing: border-box;
+    padding:6px 4px;
+    margin:0 14px
+}
+.haveMsg p:last-child{
+    border: none;
+}
+.msgList{
+    width: 94%;
+    border-bottom: 1px dashed #bebebe;
+    box-sizing: border-box;
+    padding:10px 4px;
+    margin:0 3%;
+    float: left;
+    position: relative;
+}
+.msgList.isRead{
+    color: #979797;
+}
+.msgList span{
+    /* display: table-cell;
+    vertical-align: middle; */
+}
+.msgList span i.state{
+    /* float: left; */
+    position: absolute;
+    font-weight: normal;
+    border:1px solid #dedede;
+    border-radius: 6px;
+    font-size: 12px;
+    padding:2px 6px;
+    left: 0;
+    /* margin-top: -1px; */
+    box-sizing: border-box;
+}
+.dianpingPhoneOwner button,
+.ketangPhone button{
+    border: 1px solid #e4e4e4;
+    background-color: #f8f8f8;
+    box-sizing: border-box;
+    margin-top: -4px;
+}
+.msgList span.title{
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 150px;
+    padding-left: 40px;
+}
+.msgList span.time{
+    position: absolute;
+    width: 120px;
+    font-size: 12px;
+    text-align: right;
+    right: 20px;
+}
+.msgList span.details{
+    position: absolute;
+    font-size: 12px;
+    width: 15px;
+    text-align: right;
+    font-weight: bold;
+    margin-top: 2px;
+    right: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+

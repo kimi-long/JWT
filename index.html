@@ -1,0 +1,27 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-01-31 20:57:39
+ * @LastEditTime : 2020-02-07 21:45:28
+ * @LastEditors  : Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \智火约课\index.html
+ -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <!--<title>智火约课</title>-->
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
+<script>
+  document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+    WeixinJSBridge.call('hideToolbar');
+    WeixinJSBridge.call('hideOptionMenu');
+  });
+</script>
