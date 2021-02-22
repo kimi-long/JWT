@@ -24,24 +24,29 @@
            <el-button size="medium"  type="primary" @click="refreshTable">返回本周</el-button>
          </div>
    </div>
-    <div class="flexB" style="margin-top:10px;margin-left:10px;margin-right:10px;margin-bottom:10px;">
+    <van-dropdown-menu active-color="#4aa1ec">
+      <van-dropdown-item v-model="RowClassType" :options="option1"  @change="handleRowClassType"/>
+      <van-dropdown-item v-model="CourseID" :options="courseList"  @change="handleSearchCourse"/>
+      <van-dropdown-item v-model="ClassTeacher" :options="teacherList"  @change="handleSearchCourse"/>
+    </van-dropdown-menu>
+<!--    <div class="flexB" style="margin-top:10px;margin-left:10px;margin-right:10px;margin-bottom:10px;">-->
 
-               <el-select v-model="RowClassType" style="width:150px;" @change="handleRowClassType">
-                                    <el-option label="一对多" value="0"></el-option>
-                                    <el-option label="一对一" value="1"></el-option>
-             </el-select>&nbsp;
-             <el-select v-model="CourseID" clearable   style="width:150px;" @change="handleSearchCourse "  placeholder="请选择课程">
-                   <el-option v-for="item in courseList" :value="item.ID" :label="item.CourseName" :key="item.index">
-                 </el-option>
-              </el-select>
+<!--               <el-select v-model="RowClassType" style="width:150px;" @change="handleRowClassType">-->
+<!--                                    <el-option label="一对多" value="0"></el-option>-->
+<!--                                    <el-option label="一对一" value="1"></el-option>-->
+<!--             </el-select>&nbsp;-->
+<!--             <el-select v-model="CourseID" clearable   style="width:150px;" @change="handleSearchCourse "  placeholder="请选择课程">-->
+<!--                   <el-option v-for="item in courseList" :value="item.ID" :label="item.CourseName" :key="item.index">-->
+<!--                 </el-option>-->
+<!--              </el-select>-->
 
-   </div>
-   <div class="flexB" v-if="isTeacher=='0'" style="margin-top:10px;margin-left:10px;margin-right:10px;margin-bottom:10px;">
-            <el-select v-model="ClassTeacher"  style="width:150px;"  clearable @change="handleSearchCourse "   placeholder="请选择老师" >
-                 <el-option v-for="item in teacherList" :value="item.ID" :label="item.Name" :key="item.index">
-                  </el-option>
-              </el-select>
-   </div>
+<!--   </div>-->
+<!--   <div class="flexB" v-if="isTeacher=='0'" style="margin-top:10px;margin-left:10px;margin-right:10px;margin-bottom:10px;">-->
+<!--            <el-select v-model="ClassTeacher"  style="width:150px;"  clearable @change="handleSearchCourse "   placeholder="请选择老师" >-->
+<!--                 <el-option v-for="item in teacherList" :value="item.ID" :label="item.Name" :key="item.index">-->
+<!--                  </el-option>-->
+<!--              </el-select>-->
+<!--   </div>-->
 
 
     <div class="stu-order-list stu-order-list2" v-for="items in ListRowClass" >
@@ -150,6 +155,10 @@
     },
     data() {
       return {
+        option1: [
+          { text: '一对多', value: '0' },
+          { text: '一对一', value: '1' },
+        ],
         actionLine:{},
         actionshow:false,
         RowClassID:"",
@@ -222,7 +231,16 @@
           TeacherID:localStorage.getItem("teacherID")
         })
         if(crs.orsuccess=='1'){
-          this.teacherList = crs.data
+          this.teacherList = crs.data;
+          this.teacherList.forEach((item,index)=>{
+            item.text = item.Name;
+            item.value = item.ID;
+          });
+          let aaa = {
+            text : '全部老师',
+            value : '',
+          };
+          this.teacherList.unshift(aaa);
           this.getwxlistCourse();
         }else{
           this.$refs.messageChild.toast(crs.Msg)
@@ -235,6 +253,15 @@
         })
         if(crs.orsuccess=='1'){
           this.courseList = crs.data
+          this.courseList.forEach((item,index)=>{
+            item.text = item.CourseName;
+            item.value = item.ID;
+          });
+          let aaa = {
+            text : '全部课程',
+            value : '',
+          };
+          this.courseList.unshift(aaa);
           this.$store.commit('fullLoadingFun',false);
         }else{
           this.$refs.messageChild.toast(crs.Msg)

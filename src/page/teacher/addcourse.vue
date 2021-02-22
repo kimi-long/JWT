@@ -1,7 +1,7 @@
 
 <template>
   <div  style="padding:24px;" >
-   <el-form :model="ruleForm" ref="ruleForm" :rules="rules" label-width="120px" label-position="right">
+   <el-form :model="ruleForm" ref="ruleForm" :rules="rules" label-width="120px" label-position="top">
                      <!-- {{ruleForm}} -->
 
                         <el-form-item label="课程名称：" prop="CourseName">

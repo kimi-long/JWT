@@ -17,47 +17,47 @@
         <span class="weixin-name">{{ruleFrom.Name}}</span>
         <i class="iconfont icon-iconfontjiantou6"></i>
       </div>
-      <div class="owner-list-box" @click="toMyMsg">
-        <i class="iconfont icon-xiaoxixinfengnews2 message"></i>
-        <span>消息</span>
-        <span class="num">{{ruleFrom.unreadCount}}</span>
-        <i class="iconfont icon-iconfontjiantou6"></i>
-      </div>
+<!--      <div class="owner-list-box" @click="toMyMsg">-->
+<!--        <i class="iconfont icon-xiaoxixinfengnews2 message"></i>-->
+<!--        <span>消息</span>-->
+<!--        <span class="num">{{ruleFrom.unreadCount}}</span>-->
+<!--        <i class="iconfont icon-iconfontjiantou6"></i>-->
+<!--      </div>-->
       <div class="owner-list-box" @click="toMyHome">
         <i class="iconfont icon-wode myHome"></i>
         <span>我的主页</span>
         <i class="iconfont icon-iconfontjiantou6"></i>
       </div>
-      <div class="owner-list-box" v-if="isCourse =='1'" @click="toCourse">
-        <i class="iconfont icon-kecheng myHome"></i>
-        <span>课程管理</span>
-        <i class="iconfont icon-iconfontjiantou6"></i>
-      </div>
-      <div class="owner-list-box" v-if="isRowClass =='1'" @click="toRowClass">
-        <i class="iconfont icon-keshi_m myHome"></i>
-        <span>课表管理</span>
-        <i class="iconfont icon-iconfontjiantou6"></i>
-      </div>
-      <div class="owner-list-box" v-if="isTeacher =='1'" @click="toTeacher">
-        <i class="iconfont icon-laoshi myHome"></i>
-        <span>员工管理</span>
-        <i class="iconfont icon-iconfontjiantou6"></i>
-      </div>
-      <div class="owner-list-box"  v-if="isMembers =='1'" @click="toMembers">
-        <i class="iconfont icon-wodedangxuan myHome"></i>
-        <span>会员管理</span>
-        <i class="iconfont icon-iconfontjiantou6"></i>
-      </div>
-      <div class="owner-list-box"  v-if="isMemberCard =='1'"  @click="toMemberCard">
-        <i class="iconfont icon-huiyuanqia myHome"></i>
-        <span>会员卡管理</span>
-        <i class="iconfont icon-iconfontjiantou6"></i>
-      </div>
-       <div class="owner-list-box" v-if="isMemberYJ=='1'" @click="toxuqi">
-        <i class="iconfont icon-time_icon myHome"></i>
-        <span>续期提醒</span>
-        <i class="iconfont icon-iconfontjiantou6"></i>
-      </div>
+<!--      <div class="owner-list-box" v-if="isCourse =='1'" @click="toCourse">-->
+<!--        <i class="iconfont icon-kecheng myHome"></i>-->
+<!--        <span>课程管理</span>-->
+<!--        <i class="iconfont icon-iconfontjiantou6"></i>-->
+<!--      </div>-->
+<!--      <div class="owner-list-box" v-if="isRowClass =='1'" @click="toRowClass">-->
+<!--        <i class="iconfont icon-keshi_m myHome"></i>-->
+<!--        <span>课表管理</span>-->
+<!--        <i class="iconfont icon-iconfontjiantou6"></i>-->
+<!--      </div>-->
+<!--      <div class="owner-list-box" v-if="isTeacher =='1'" @click="toTeacher">-->
+<!--        <i class="iconfont icon-laoshi myHome"></i>-->
+<!--        <span>员工管理</span>-->
+<!--        <i class="iconfont icon-iconfontjiantou6"></i>-->
+<!--      </div>-->
+<!--      <div class="owner-list-box"  v-if="isMembers =='1'" @click="toMembers">-->
+<!--        <i class="iconfont icon-wodedangxuan myHome"></i>-->
+<!--        <span>会员管理</span>-->
+<!--        <i class="iconfont icon-iconfontjiantou6"></i>-->
+<!--      </div>-->
+<!--      <div class="owner-list-box"  v-if="isMemberCard =='1'"  @click="toMemberCard">-->
+<!--        <i class="iconfont icon-huiyuanqia myHome"></i>-->
+<!--        <span>会员卡管理</span>-->
+<!--        <i class="iconfont icon-iconfontjiantou6"></i>-->
+<!--      </div>-->
+<!--       <div class="owner-list-box" v-if="isMemberYJ=='1'" @click="toxuqi">-->
+<!--        <i class="iconfont icon-time_icon myHome"></i>-->
+<!--        <span>续期提醒</span>-->
+<!--        <i class="iconfont icon-iconfontjiantou6"></i>-->
+<!--      </div>-->
       <div class="owner-list-box" @click="toxeditPwd">
         <i class="iconfont icon-xiepinglun myHome"></i>
         <span>修改密码</span>
