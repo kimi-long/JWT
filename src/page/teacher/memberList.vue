@@ -14,26 +14,32 @@
      <el-button  size="medium" type="primary" v-if="canAdd" @click="addMemberClick">添加会员</el-button>
 
     </div>
-     <div class="flexB" style="margin-top:10px;margin-left:10px;margin-right:10px;margin-bottom:10px;">
-         <div class="flexS">
-             <el-select v-model="SelectIsvip" style="width:150px;" @change="handleSelectIsvip">
-                                    <el-option label="全部" value="1"></el-option>
-                                    <el-option label="会员" value="2"></el-option>
-                                    <el-option label="非会员" value="3"></el-option>
-                                </el-select> &nbsp;
-              <el-select v-model="SelectVipType" style="width:150px;" clearable @change="handleSelectIsvip"  placeholder="会员卡类型"  >
-                      <el-option v-for="item in MemberCardList" :key="item.index" :label="item.CardName " :value="item.ID">
-                      </el-option>
-               </el-select>
-         </div>
-   </div>
+    <van-dropdown-menu active-color="#4aa1ec">
+      <van-dropdown-item v-model="SelectIsvip" :options="option1"  @change="handleSelectIsvip"/>
+      <van-dropdown-item v-model="SelectVipType" :options="MemberCardList"  @change="handleSelectIsvip"/>
+      <van-dropdown-item v-model="SelectType" :options="option2"  @change="handleSearchType"/>
+    </van-dropdown-menu>
+     <!--<div class="flexB" style="margin-top:10px;margin-left:10px;margin-right:10px;margin-bottom:10px;">-->
+
+         <!--<div class="flexS">-->
+             <!--<el-select v-model="SelectIsvip" style="width:150px;" @change="handleSelectIsvip">-->
+                                    <!--<el-option label="全部" value="1"></el-option>-->
+                                    <!--<el-option label="会员" value="2"></el-option>-->
+                                    <!--<el-option label="非会员" value="3"></el-option>-->
+                                <!--</el-select> &nbsp;-->
+              <!--<el-select v-model="SelectVipType" style="width:150px;" clearable @change="handleSelectIsvip"  placeholder="会员卡类型"  >-->
+                      <!--<el-option v-for="item in MemberCardList" :key="item.index" :label="item.CardName " :value="item.ID">-->
+                      <!--</el-option>-->
+               <!--</el-select>-->
+         <!--</div>-->
+   <!--</div>-->
     <div class="flexB" style="margin-top:10px;margin-left:10px;margin-right:10px;margin-bottom:10px;">
          <div class="flexS">
-              <el-select v-model="SelectType" style="width:110px;" @change="handleSearchType">
-                                    <el-option label="会员信息" value="1"></el-option>
-                                    <el-option label="分类标签" value="2"></el-option>
-                                </el-select>&nbsp;
-              <el-input :placeholder="searchPlaceholder" style="width:150px;" v-model="searchContent"  ></el-input>&nbsp;&nbsp;
+              <!--<el-select v-model="SelectType" style="width:110px;" @change="handleSearchType">-->
+                                    <!--<el-option label="会员信息" value="1"></el-option>-->
+                                    <!--<el-option label="分类标签" value="2"></el-option>-->
+                                <!--</el-select>&nbsp;-->
+              <el-input :placeholder="searchPlaceholder" style="width:250px;" v-model="searchContent"  ></el-input>&nbsp;&nbsp;
               <el-button type="primary" size="medium" @click="searchClick">搜索</el-button>
          </div>
    </div>
@@ -247,6 +253,15 @@
     },
     data() {
       return {
+        option1: [
+          { text: '全部', value: '1' },
+          { text: '会员', value: '2' },
+          { text: '非会员', value: '3' },
+        ],
+        option2: [
+          { text: '会员信息', value: '1' },
+          { text: '分类标签', value: '2' },
+        ],
          MemberID:"",
          SelectIsvip:"1",
          SelectVipType:"",
@@ -336,6 +351,15 @@
            const crs = await getListwxMemberCard({StoresID:localStorage.getItem("storesid")})
                               if(crs.orsuccess == '1'){
                                 this.MemberCardList = crs.data;
+                                this.MemberCardList.forEach((item,index)=>{
+                                  item.text = item.CardName;
+                                  item.value = item.ID;
+                                });
+                                let aaa = {
+                                  text : '全部',
+                                  value : '',
+                                };
+                                this.MemberCardList.unshift(aaa);
                                  this.$store.commit('fullLoadingFun',false);
 
                               }else

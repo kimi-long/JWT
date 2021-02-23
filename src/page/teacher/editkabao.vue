@@ -1,7 +1,7 @@
 
 <template>
   <div  style="padding:24px;" >
-   <el-form :model="ruleForm" ref="ruleForm" :rules="rules" label-width="120px" label-position="right">
+   <el-form :model="ruleForm" ref="ruleForm" :rules="rules" label-width="120px" label-position="top">
                     <el-form-item label="门店：" prop="StoresID">
                         <el-radio-group v-model="ruleForm.StoresID">
                             <el-radio v-for="item in storeList" :label="item.ID" :key="item.index">
@@ -138,6 +138,7 @@
 <script>
   import { stuGetListStoresName,editwxMemberCard,getwxMemberCard,getListCradImg,getwxlistCourse } from "@/api/getData";
   import message from "@/components/message";
+
   export default {
     data() {
       return {
