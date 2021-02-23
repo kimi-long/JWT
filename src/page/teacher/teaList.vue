@@ -32,13 +32,15 @@
             </p>
             <p>{{items.Introduce}}</p>
           </div>
-
-          <div class="stu-order-list-right-btn isActive" v-if="canEdit" @click="toStuTeacherDetails(items)">
-            <span>编辑</span>
+          <div class="stu-order-list-right-btn isActive"  @click="openAction(items)">
+            <span>操作</span>
           </div>
-           <div class="stu-order-list-right-btn isActive" v-if="canDelete" @click="todel(items)">
-            <span>删除</span>
-          </div>
+<!--          <div class="stu-order-list-right-btn isActive" v-if="canEdit" @click="toStuTeacherDetails(items)">-->
+<!--            <span>编辑</span>-->
+<!--          </div>-->
+<!--           <div class="stu-order-list-right-btn isActive" v-if="canDelete" @click="todel(items)">-->
+<!--            <span>删除</span>-->
+<!--          </div>-->
 
          </div>
       </div>
@@ -63,6 +65,13 @@
       </span>
     </el-dialog>
     <message ref="messageChild"></message>
+    <van-action-sheet
+      v-model="actionshow"
+      :actions="actions"
+      cancel-text="取消"
+      close-on-click-action
+      @select="operation"
+    />
    </div>
 </template>
 <style scoped>
@@ -82,6 +91,7 @@
 
   import { getListTeacher,delTeacher } from "@/api/getData";
   import message from "@/components/message";
+  import {Dialog} from "vant";
    export default {
     destroyed () {
       document.querySelector('body').removeAttribute('style')
@@ -94,6 +104,9 @@
          addressActive:"",
          teaID:"",
         teacherList:[],
+        actionLine:{},
+        actions: [{name: '编辑'}, {name: '删除'}],
+        actionshow:false,
         dialogdelVisible:false,
         selectedStore:localStorage.getItem("storesid"),
                 canAdd:false,
@@ -112,7 +125,18 @@
       this.getButtonPermissions()
     },
     methods: {
+      openAction(item) {
+        this.actionshow = true;
+        this.actionLine = item;
+      },
+      operation(item) {
 
+        if(item.name == '编辑'){
+          this.toStuTeacherDetails(this.actionLine);
+        }else if(item.name == '删除'){
+          this.todel(this.actionLine);
+        }
+      },
       async stuGetListTeachers(){
         this.$store.commit('fullLoadingFun',true);
         const crs = await getListTeacher({
@@ -156,8 +180,17 @@
            this.$router.push('/addTeach')
       },todel(items){
         this.teaID= items.ID;
-        this.dialogdelVisible = true;
-
+        Dialog.confirm({
+          title: '删除提醒',
+          message: '是否确定将员工删除？',
+        })
+          .then(() => {
+            this.dodel();
+            // on confirm
+          })
+          .catch(() => {
+            // on cancel
+          });
       },dodel(){
          this.delTeacher();
       },async delTeacher(){
