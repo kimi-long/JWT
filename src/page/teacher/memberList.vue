@@ -70,7 +70,9 @@
               </p>
 
           </div>
-
+          <div class="stu-order-list-right-btn isActive"  @click="openAction(items)">
+            <span>操作</span>
+          </div>
             <div class="stu-order-list-right-btn1 isActive" v-if="canEdit" @click="toStuTeacherDetails(items)">
             <span>编辑</span>
             </div>
@@ -184,6 +186,13 @@
       </span>
     </el-dialog>
     <message ref="messageChild"></message>
+    <van-action-sheet
+      v-model="actionshow"
+      :actions="actions"
+      cancel-text="取消"
+      close-on-click-action
+      @select="operation"
+    />
    </div>
 </template>
 <style scoped>
@@ -244,6 +253,7 @@
 
   import { getListwxMembers,delwxMembers,getListwxMemberCard,stuGetListStoresName,addwxMembersvip } from "@/api/getData";
   import message from "@/components/message";
+  import {Dialog} from "vant";
    export default {
     destroyed () {
       document.querySelector('body').removeAttribute('style')
@@ -253,6 +263,9 @@
     },
     data() {
       return {
+        actionLine:{},
+        actions: [{name: '编辑'}, {name: '删除'},{name:'发卡'}],
+        actionshow:false,
         option1: [
           { text: '全部', value: '1' },
           { text: '会员', value: '2' },
@@ -325,7 +338,20 @@
       this.getButtonPermissions()
     },
     methods: {
+      openAction(item) {
+        this.actionshow = true;
+        this.actionLine = item;
+      },
+      operation(item) {
 
+        if(item.name == '编辑'){
+          this.toStuTeacherDetails(this.actionLine);
+        }else if(item.name == '删除'){
+          this.todel(this.actionLine);
+        }else if(item.name == '发卡'){
+          this.faka(this.actionLine);
+        }
+      },
       async getListwxMembers(){
         this.$store.commit('fullLoadingFun',true);
         const crs = await getListwxMembers({
@@ -418,10 +444,19 @@
         this.$router.push('/editmember')
       },addMemberClick(){
           this.$router.push('/addmember')
-       },todel(val){
-        this.MembersID =val.ID;
-        this.dialogdelVisible = true;
-
+       },todel(items){
+        this.MembersID= items.ID;
+        Dialog.confirm({
+          title: '删除提醒',
+          message: '是否确定将会员删除？',
+        })
+          .then(() => {
+            this.dodel();
+            // on confirm
+          })
+          .catch(() => {
+            // on cancel
+          });
       },dodel(){
          this.delwxMembers();
       },async delwxMembers(){
