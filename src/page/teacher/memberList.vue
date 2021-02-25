@@ -43,62 +43,71 @@
         <el-button type="primary" size="medium" @click="searchClick">搜索</el-button>
       </div>
     </div>
-    <div class="stu-order-list stu-order-list2" v-for="items in MemberList">
-      <div class="stu-order-list-right">
-        <div class="stu-order-list-right-table">
-          <div class="stu-order-list-right-img" v-if="items.WxHeadUrl != '' && items.WxHeadUrl!=undefined">
-            <img :src="items.WxHeadUrl"/>
-          </div>
-          <div class="stu-order-list-right-img" v-if="items.WxHeadUrl == '' || items.WxHeadUrl==undefined">
+    <van-list
+      v-model="loading"
+      :finished="finished"
+      finished-text="没有更多了"
+      @load="onLoad"
+    >
+      <div class="stu-order-list stu-order-list2" v-for="items in MemberList">
 
-            <img src="../../assets/img/userAvatar.png">
+        <div class="stu-order-list-right">
+          <div class="stu-order-list-right-table">
+            <div class="stu-order-list-right-img" v-if="items.WxHeadUrl != '' && items.WxHeadUrl!=undefined">
+              <img :src="items.WxHeadUrl"/>
+            </div>
+            <div class="stu-order-list-right-img" v-if="items.WxHeadUrl == '' || items.WxHeadUrl==undefined">
 
-          </div>
+              <img src="../../assets/img/userAvatar.png">
+
+            </div>
 
 
-          <div class="stu-order-list-right-content">
-            <p>
-              <span>{{items.Name}}</span>
-            </p>
+            <div class="stu-order-list-right-content">
+              <p>
+                <span>{{items.Name}}</span>
+              </p>
 
-            <p>{{items.Phone}}</p>
-            <p>{{items.TypeLabel}}</p>
-            <p>{{items.Note}}</p>
-            <p>
+              <p>{{items.Phone}}</p>
+              <p>{{items.TypeLabel}}</p>
+              <p>{{items.Note}}</p>
+              <p>
               <span style="font-weight:700;font-size:15px;color:#389d0f;" v-if="items.listVip.length>0"
                     @click="Cardvip(items)">已绑卡</span>
-              <span v-if="items.listVip.length==0">未绑卡</span>
-            </p>
+                <span v-if="items.listVip.length==0">未绑卡</span>
+              </p>
 
+            </div>
+            <div class="stu-order-list-right-btn isActive" @click="openAction(items)">
+              <span>操作</span>
+            </div>
+            <!--<div class="stu-order-list-right-btn1 isActive" v-if="canEdit" @click="toStuTeacherDetails(items)">-->
+            <!--<span>编辑</span>-->
+            <!--</div>-->
+            <!--<div   class="stu-order-list-right-btn1 isActive" v-if="canDelete" @click="todel(items)">-->
+            <!--<span>删除</span>-->
+            <!--</div>-->
+            <!--<div  class="stu-order-list-right-btn1 isActive" v-if="canEdit" @click="faka(items)">-->
+            <!--<span>发卡</span>-->
+            <!--</div>-->
           </div>
-          <div class="stu-order-list-right-btn isActive" @click="openAction(items)">
-            <span>操作</span>
-          </div>
-          <!--<div class="stu-order-list-right-btn1 isActive" v-if="canEdit" @click="toStuTeacherDetails(items)">-->
-          <!--<span>编辑</span>-->
-          <!--</div>-->
-          <!--<div   class="stu-order-list-right-btn1 isActive" v-if="canDelete" @click="todel(items)">-->
-          <!--<span>删除</span>-->
-          <!--</div>-->
-          <!--<div  class="stu-order-list-right-btn1 isActive" v-if="canEdit" @click="faka(items)">-->
-          <!--<span>发卡</span>-->
-          <!--</div>-->
+
+
         </div>
-
-
       </div>
-    </div>
-    <div class="Pagination userPagination">
-      <el-pagination
-        @size-change="handleSizeChange1"
-        @current-change="handleCurrentChange1"
-        :current-page.sync="currentPage1"
-        :page-sizes="[10,20,30,40]"
-        :page-size="limit1"
-        layout="total,prev,pager,next,sizes "
-        :total="count1">
-      </el-pagination>
-    </div>
+    </van-list>
+
+<!--    <div class="Pagination userPagination">-->
+<!--      <el-pagination-->
+<!--        @size-change="handleSizeChange1"-->
+<!--        @current-change="handleCurrentChange1"-->
+<!--        :current-page.sync="currentPage1"-->
+<!--        :page-sizes="[10,20,30,40]"-->
+<!--        :page-size="limit1"-->
+<!--        layout="total,prev,pager,next,sizes "-->
+<!--        :total="count1">-->
+<!--      </el-pagination>-->
+<!--    </div>-->
     <el-dialog
       title="提示"
       :visible.sync="dialogdelVisible"
@@ -152,7 +161,6 @@
         <el-form-item label="开卡日期：" v-if="ruleFormfakaClass.CardID>0 &&ruleFormfakaClass.iskaika=='1'" prop="KaiKaTime">
           <el-input type="date" v-model="ruleFormfakaClass.KaiKaTime"
                     @change='selectData2(ruleFormfakaClass)'></el-input>
-          </el-date-picker>
         </el-form-item>
         <el-form-item label="购买次数：" v-if="ruleFormfakaClass.CardID>0 &&showKynumber" prop="buyCount">
           <el-input v-model="ruleFormfakaClass.buyCount" placeholder="购买次数" style="width:100px;"></el-input>
@@ -293,6 +301,8 @@
         actionLine: {},
         actions: [],
         actionshow: false,
+        loading: false,
+        finished: false,
         option1: [
           {text: '全部', value: '1'},
           {text: '会员', value: '2'},
@@ -313,7 +323,7 @@
         limit1: 10,
         count1: 0,
         currentPage1: 1,
-        offset1: 1,
+        offset1: 0,
         MemberList: [],
         MemberCardList: [],
         storeList: [],
@@ -361,20 +371,13 @@
       message
     },
     created() {
-      this.getListwxMembers()
-      this.getButtonPermissions()
+      //this.getListwxMembers();
+      this.getButtonPermissions();
+      this.getListwxMemberCard1();
     },
     methods: {
-      unique(arr) {
-        for (var i = 0; i < arr.length; i++) {
-          for (var j = i + 1; j < arr.length; j++) {
-            if (arr[i] == arr[j]) {         //第一个等同于第二个，splice方法删除第二个
-              arr.splice(j, 1);
-              j--;
-            }
-          }
-        }
-        return arr;
+      onLoad(){
+        this.getListwxMembers();
       },
       openAction(item) {
         this.actionshow = true;
@@ -391,7 +394,8 @@
         }
       },
       async getListwxMembers() {
-        this.$store.commit('fullLoadingFun', true);
+        this.offset1 = this.offset1 + 1;
+        // this.$store.commit('fullLoadingFun', true);
         const crs = await getListwxMembers({
           StoresID: this.selectedStore,
           LabelID: "0",
@@ -403,12 +407,19 @@
           psize: this.limit1
         })
         if (crs.orsuccess == '1') {
-          this.MemberList = crs.data;
-          this.count1 = crs.allcount;
-          this.getListwxMemberCard1();
+          // this.MemberList = crs.data;
+          this.loading = false;
+          crs.data.forEach((item,index)=>{
+            this.MemberList.push(item);
+          })
+          if(crs.data.length < 10){
+            this.finished = true;
+          }
+          // this.count1 = crs.allcount;
+
         } else {
           this.$refs.messageChild.toast(crs.Msg)
-          this.$store.commit('fullLoadingFun', false);
+          // this.$store.commit('fullLoadingFun', false);
         }
       }, async getListwxMemberCard1() {
 

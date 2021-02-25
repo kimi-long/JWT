@@ -14,62 +14,70 @@
       <span style="font-size:12.5px">预警值： 剩余次数{{YJCardNumber}}次 或 剩余天数{{YJCardDays}}天 或 剩余金额{{YJAmount}}元</span>
 
     </div>
-    <div class="stu-order-list stu-order-list2" v-for="items in MemberYJList">
-      <div class="stu-order-list-right">
-        <div class="stu-order-list-right-table">
-          <div class="stu-order-list-right-img" v-if="items.WxHeadUrl != '' && items.WxHeadUrl!=undefined">
-            <img :src="items.WxHeadUrl"/>
-          </div>
-          <div class="stu-order-list-right-img" v-if="items.WxHeadUrl == '' || items.WxHeadUrl==undefined">
+    <van-list
+      v-model="loading"
+      :finished="finished"
+      finished-text="没有更多了"
+      @load="onLoad"
+    >
+      <div class="stu-order-list stu-order-list2" v-for="items in MemberYJList">
+        <div class="stu-order-list-right">
+          <div class="stu-order-list-right-table">
+            <div class="stu-order-list-right-img" v-if="items.WxHeadUrl != '' && items.WxHeadUrl!=undefined">
+              <img :src="items.WxHeadUrl"/>
+            </div>
+            <div class="stu-order-list-right-img" v-if="items.WxHeadUrl == '' || items.WxHeadUrl==undefined">
 
-            <img src="../../assets/img/userAvatar.png">
+              <img src="../../assets/img/userAvatar.png">
 
-          </div>
+            </div>
 
 
-          <div class="stu-order-list-right-content">
-            <p>
-              <span>{{items.Name}}</span>
-            </p>
+            <div class="stu-order-list-right-content">
+              <p>
+                <span>{{items.Name}}</span>
+              </p>
 
-            <p>{{items.Phone}}</p>
-            <p>{{items.CardName}}</p>
-            <p>
-              <span v-if="items.CardType =='1'">次卡（有期限）</span>
-              <span v-if="items.CardType =='2'">次卡（无限期） </span>
-              <span v-if="items.CardType =='3'">期限卡（不限次数） </span>
-              <span v-if="items.CardType =='4'">储蓄卡（无限期） </span>
-            </p>
-            <p><span style="color: red;" v-if="items.CardType =='1'">{{items.CardNumber}}次 （{{items.CardDays}} 天）</span>
-              <span style="color: red;" v-if="items.CardType =='2'">{{items.CardNumber}}次 </span>
-              <span style="color: red;" v-if="items.CardType =='3'">{{items.CardDays}} 天  </span>
-              <span style="color: red;" v-if="items.CardType =='4'">{{items.Amount}}元 </span></p>
+              <p>{{items.Phone}}</p>
+              <p>{{items.CardName}}</p>
+              <p>
+                <span v-if="items.CardType =='1'">次卡（有期限）</span>
+                <span v-if="items.CardType =='2'">次卡（无限期） </span>
+                <span v-if="items.CardType =='3'">期限卡（不限次数） </span>
+                <span v-if="items.CardType =='4'">储蓄卡（无限期） </span>
+              </p>
+              <p><span style="color: red;" v-if="items.CardType =='1'">{{items.CardNumber}}次 （{{items.CardDays}} 天）</span>
+                <span style="color: red;" v-if="items.CardType =='2'">{{items.CardNumber}}次 </span>
+                <span style="color: red;" v-if="items.CardType =='3'">{{items.CardDays}} 天  </span>
+                <span style="color: red;" v-if="items.CardType =='4'">{{items.Amount}}元 </span></p>
 
-          </div>
-          <div class="stu-order-list-right-btn isActive" @click="openAction(items)">
-            <span>操作</span>
-          </div>
-          <!--<div class="stu-order-list-right-btn isActive" v-if="canEdit" @click="toStuTeacherDetails(items)">-->
+            </div>
+            <div class="stu-order-list-right-btn isActive" @click="openAction(items)">
+              <span>操作</span>
+            </div>
+            <!--<div class="stu-order-list-right-btn isActive" v-if="canEdit" @click="toStuTeacherDetails(items)">-->
             <!--<span>续费</span>-->
-          <!--</div>-->
-          <!--<div class="stu-order-list-right-btn isActive" v-if="canAdd" @click="todel(items)">-->
+            <!--</div>-->
+            <!--<div class="stu-order-list-right-btn isActive" v-if="canAdd" @click="todel(items)">-->
             <!--<span>预警</span>-->
-          <!--</div>-->
+            <!--</div>-->
 
+          </div>
         </div>
       </div>
-    </div>
-    <div class="Pagination userPagination">
-      <el-pagination
-        @size-change="handleSizeChange1"
-        @current-change="handleCurrentChange1"
-        :current-page.sync="currentPage1"
-        :page-sizes="[10,20,30,40]"
-        :page-size="limit1"
-        layout="total,prev,pager,next,sizes "
-        :total="count1">
-      </el-pagination>
-    </div>
+    </van-list>
+
+<!--    <div class="Pagination userPagination">-->
+<!--      <el-pagination-->
+<!--        @size-change="handleSizeChange1"-->
+<!--        @current-change="handleCurrentChange1"-->
+<!--        :current-page.sync="currentPage1"-->
+<!--        :page-sizes="[10,20,30,40]"-->
+<!--        :page-size="limit1"-->
+<!--        layout="total,prev,pager,next,sizes "-->
+<!--        :total="count1">-->
+<!--      </el-pagination>-->
+<!--    </div>-->
     <el-dialog
       title="提示"
       :visible.sync="dialogdelVisible"
@@ -194,6 +202,8 @@
       return {
         actionLine: {},
         actionshow: false,
+        loading: false,
+        finished: false,
         actions: [],
         MemberID: "",
         dialohykVisible: false,
@@ -207,7 +217,7 @@
         limit1: 10,
         count1: 0,
         currentPage1: 1,
-        offset1: 1,
+        offset1: 0,
         YJCardNumber: "",
         YJCardDays: "",
         YJAmount: "",
@@ -236,10 +246,13 @@
       message
     },
     created() {
-      this.getListYJStu()
+      // this.getListYJStu()
       this.getButtonPermissions()
     },
     methods: {
+      onLoad(){
+        this.getListYJStu();
+      },
       openAction(item) {
         this.actionshow = true;
         this.actionLine = item;
@@ -252,6 +265,7 @@
         }
       },
       async getListYJStu() {
+        this.offset1 = this.offset1 + 1;
         this.$store.commit('fullLoadingFun', true);
         const crs = await getListYJStu({
           StoresID: this.selectedStore,
@@ -259,7 +273,13 @@
           psize: this.limit1
         })
         if (crs.orsuccess == '1') {
-          this.MemberYJList = crs.data;
+          this.loading = false;
+          crs.data.forEach((item,index)=>{
+            this.MemberYJList.push(item);
+          })
+          if(crs.data.length < 10){
+            this.finished = true;
+          }
           this.count1 = crs.allcount;
           this.YJCardNumber = crs.CardNumber;
           this.YJCardDays = crs.CardDays;
