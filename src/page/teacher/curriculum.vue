@@ -9,11 +9,11 @@
 <template>
 
   <div class="padding-bottom">
-    <div style="margin-bottom:10px;margin-top:10px;margin-left:10px;">
-     <el-button  size="medium" type="primary" v-if="canAdd" @click="addMemberCradClick">排课</el-button>
+    <div style="margin-bottom:10px;margin-top:10px;margin-left:10px;height: 40px;">
+
 
       <span  style="margin-left:10px;">{{Stime}}~{{Etime}}</span>
-
+      <el-button   style="float: right;margin-right: 10px" size="medium" type="primary" v-if="canAdd" @click="addMemberCradClick"><i class="iconfont icon-jia"></i>  排课</el-button>
     </div>
  <div class="flexB" style="margin-top:10px;margin-left:10px;margin-right:10px;margin-bottom:10px;">
             <div class="flexS">

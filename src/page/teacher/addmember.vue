@@ -25,7 +25,6 @@
                             </el-radio>
                         </el-radio-group>
                     </el-form-item>
-                    </el-form-item>
                      <el-form-item label="出生日期：" prop="Birthday">
                      <el-input  type="date" v-model="ruleForm.Birthday" > </el-input>
                      </el-form-item>
@@ -41,7 +40,7 @@
                         </el-radio-group>
                     </el-form-item>
                     <el-form-item label="选择会员卡：" v-if="showCardID"  prop="CardID1">
-                        <el-select v-model="ruleForm.CardName" filterable  @change="changeCardID1"  placeholder="请选择会员卡">
+                        <el-select v-model="ruleForm.CardName"   @change="changeCardID1"  placeholder="请选择会员卡">
                             <el-option v-for="item in MemberCardList" :key="item.index" :label="item.CardName +'/￥'+item.SellingPrice "  :value="item.ID+','+item.CardType+','+item.CardName+','+item.Kynumber+','+item.yxdays +','+item.Amount+','+item.SellingPrice">
                             </el-option>
                         </el-select>

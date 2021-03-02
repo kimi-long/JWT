@@ -141,7 +141,7 @@
               <option v-for="items in listRowClassTime" :value="items.ID">{{items.startTime}} ~  {{items.endTime}}</option>
               </select>
           </div>
-       
+
       </div>
       <div class="isSure-btn mybot">
         <span @click="cancelPopUp">取消</span>
@@ -154,14 +154,14 @@
 <style scoped>
 
   .mybot{margin-top: 20px;}
-  
+
 .stuSearch2 select{
     font-size: 14px;
     background-color: transparent;
     color: #979797;
     text-align: center;
     text-align-last: center;
-    margin-top: 5px; 
+    margin-top: 5px;
     height: 25px;
     width: 100%;
     background: none;
@@ -221,7 +221,7 @@
         const crs = await stuUpdPreAboutState({
           StoresID:localStorage.getItem("storesid"),
           PreAboutID:localStorage.getItem("preAboutID") ,
-          RowClassTimeID:this.ruleFrom.RowClassTimeID 
+          RowClassTimeID:this.ruleFrom.RowClassTimeID
 
         })
         if(crs.orsuccess=='1'){
@@ -252,20 +252,20 @@
         this.isPopUpShow = false;
 
         if(this.type=='order'){
-          
+
           this.nowOrderFuns();
 
         }else if(this.type=='cancel'){
           this.cancelOrderFuns()
         }
       },async getstuListRowClassTime(){
-        
+
                 const crs = await getstuListRowClassTime({
                     RowClassID:localStorage.getItem("rowClassID")
                 })
                 //debugger
                 if(crs.orsuccess == '1'){
-                    // this.$message({ type: "success", message: crs.Msg });
+                    // alert(crs.Msg);
                     this.listRowClassTime = crs.data;
 
                      if(this.listRowClassTime.length>0){
@@ -274,7 +274,7 @@
                     this.isPopUpShownew = true;
 
                 }else{
-                    this.$message({ type: "error", message: crs.Msg });
+                    alert(crs.Msg);
                 }
             },changeAddress(event){
            this.ruleFrom.RowClassTimeID = event.target.value;
@@ -288,10 +288,10 @@
           }else{
          this.isPopUpShow = true;
         this.titlePopup='是否确定要预约此课程?';
-        this.type='order';         
-        
+        this.type='order';
+
         }
-    
+
       },
       async nowOrderFuns(){
         const crs = await stuAddPreAbout({

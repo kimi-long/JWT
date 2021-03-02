@@ -9,9 +9,13 @@
 <template>
   <div>
     <div class="fix-bottom">
-      <div class="fix-tea-btn" :class="{'active':(isActive=='gzt')}" @click="order">
-        <i class="iconfont icon-yuyuehuodong"></i>
+      <div class="fix-tea-btn" :class="{'active':(isActive=='gzt')}" @click="gzt">
+        <i class="iconfont icon-gongzuotai"></i>
         <p>工作台</p>
+      </div>
+      <div class="fix-tea-btn" :class="{'active':isActive=='teaOrder'}" @click="order">
+        <i class="iconfont icon-yuyuehuodong"></i>
+        <p>约课情况</p>
       </div>
       <div class="fix-tea-btn" :class="{'active':isActive=='teaOwner'}" @click="owner">
         <i class="iconfont icon-wodedangxuan"></i>
@@ -48,6 +52,9 @@
     },
     methods: {
       order(){
+        this.$router.push('/teaOrder')
+      },
+      gzt(){
         this.$router.push('/gzt')
       },
       owner(){

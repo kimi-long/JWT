@@ -7,7 +7,7 @@
  * @FilePath: \课程\src\page\teacher\order.vue
  -->
 <template>
-  <div class="padding-bottom" style="margin-top: 50px">
+  <div class="padding-bottom">
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <ul class="swiper-slide" v-for="(item,i) in currentList" ref="ul">
@@ -52,11 +52,12 @@
           <span class="timeLength">{{items.Timelength}}分钟</span>
            <span v-if="items.RowClassType == '1'" class="numNow1">私教</span>
 
-          <span class="details">详情</span>
+          <span class="details">签到</span>
         </div>
       </div>
     </div>
     <message ref="messageChild"></message>
+    <teacher-bottom></teacher-bottom>
   </div>
 </template>
 <style scoped>

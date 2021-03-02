@@ -32,12 +32,20 @@
     <div class="gongBox">
       <div class="gongtitle">教务中心</div>
       <van-grid :column-num="3">
-        <van-grid-item @click="toMyMsg">
+        <van-grid-item @click="toteaOrder">
           <div class="gongItem">
             <div>
-              <i class="blue iconfont icon-xiaoxixinfengnews2"></i>
+              <i class="green iconfont icon-yuyuehuodong"></i>
             </div>
-            <div>消息</div>
+            <div>约课情况</div>
+          </div>
+        </van-grid-item>
+        <van-grid-item @click="toRowClass">
+          <div class="gongItem">
+            <div>
+              <i class="blue iconfont icon-keshi_m"></i>
+            </div>
+            <div>课程表</div>
           </div>
         </van-grid-item>
         <van-grid-item @click="toCourse">
@@ -48,14 +56,7 @@
             <div>课程管理</div>
           </div>
         </van-grid-item>
-        <van-grid-item @click="toRowClass">
-          <div class="gongItem">
-            <div>
-              <i class="green iconfont icon-keshi_m"></i>
-            </div>
-            <div>课表管理</div>
-          </div>
-        </van-grid-item>
+
         <van-grid-item  @click="toTeacher">
           <div class="gongItem">
             <div>
@@ -75,7 +76,7 @@
         <van-grid-item @click="toMemberCard">
           <div class="gongItem">
             <div>
-              <i class="blue iconfont icon-huiyuanqia"></i>
+              <i class="purple iconfont icon-huiyuanqia"></i>
             </div>
             <div>会员卡管理</div>
           </div>
@@ -85,7 +86,15 @@
             <div>
               <i class="orange iconfont icon-time_icon"></i>
             </div>
-            <div>续费提醒</div>
+            <div>续费预警</div>
+          </div>
+        </van-grid-item>
+        <van-grid-item @click="toMyMsg">
+          <div class="gongItem">
+            <div>
+              <i class="blue iconfont icon-xiaoxixinfengnews2"></i>
+            </div>
+            <div>消息中心</div>
           </div>
         </van-grid-item>
 <!--        <van-grid-item @click="toshangpingxiaoshou">-->
@@ -211,6 +220,9 @@
       toRowClass(){
         this.$router.push('/curriculum')
       },
+      toteaOrder(){
+        this.$router.push('/teaOrder')
+      },
       toMyMsg(){
         this.$router.push('/teaMsg')
       },
@@ -266,7 +278,7 @@
     overflow-x: hidden;
     background: #f4f5f6;
     .topStore {
-      height: 140px;
+      height: 100px;
       padding: 20px;
       background-color: #fff;
       display: flex;
@@ -341,6 +353,9 @@
 
         .orange {
           color: #FF8C00;
+        }
+        .purple{
+          color: 	#D15FEE;
         }
       }
     }

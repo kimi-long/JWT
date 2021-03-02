@@ -102,7 +102,7 @@ button{
     color: #8d8d8d;
 }
 .fix-tea-btn{
-    width: 50%;
+    width: 33.3%;
     float: left;
     height: 40px;
     padding: 5px 0;
@@ -1505,14 +1505,18 @@ button{
   display: none;
 }
 
-.van-grid-item {
-  border: 1px solid 	#ddd;
-  margin-right:-1px;
-  margin-bottom:-1px;
-}
+/*.van-grid-item {*/
+  /*border: 1px solid 	#ddd;*/
+  /*margin-right:-1px;*/
+  /*margin-bottom:-1px;*/
+/*}*/
 /*.van-dropdown-item__icon{*/
   /*display: none !important;*/
 /*}*/
 /*[class*=van-hairline]::after {*/
   /*border: 1px solid #ddd !important;*/
 /*}*/
+.el-dialog--center .el-dialog__body {
+  text-align: initial;
+  padding: 25px 15px 30px !important;
+}

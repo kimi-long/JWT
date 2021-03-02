@@ -50,10 +50,11 @@
                             <el-input type="textarea" v-model="ruleForm.CourseIntroduction"></el-input>
                         </el-form-item>
                         <el-form-item label="图文详情(可选)：" prop="GraphicDetails">
-                          <quill-editor class="editor"
-                                        v-model="ruleForm.GraphicDetails"
-                                        ref="myQuillEditor">
-                          </quill-editor>
+                          <!--<quill-editor class="editor"-->
+                                        <!--v-model="ruleForm.GraphicDetails"-->
+                                        <!--ref="myQuillEditor">-->
+                          <!--</quill-editor>-->
+                          <el-input type="textarea" v-model="ruleForm.GraphicDetails"></el-input>
                          </el-form-item>
                         <el-form-item label="训练效果(可选)：" prop="TrainingEffect">
                             <el-input type="textarea" v-model="ruleForm.TrainingEffect"></el-input>
@@ -96,9 +97,9 @@
               <el-dialog
       title="选择老师"
       :visible.sync="dialoglaoshiVisible"
-      width="80%"
+      width="100%"
         >
-            <el-table :data="teacherList" ref="tableData" :row-key="(row) => {return row.ID}" :header-cell-style="{'background-color':'#f8f8f8'}" style="width:300px" @selection-change="handleSelectionChange" >
+            <el-table max-height="280" :data="teacherList" ref="tableData" :row-key="(row) => {return row.ID}" :header-cell-style="{'background-color':'#f8f8f8'}" style="width:100%" @selection-change="handleSelectionChange" >
               <el-table-column type="selection" width="55" > </el-table-column>
                  <el-table-column label="老师姓名" prop="Name" ></el-table-column>
                 <el-table-column label="手机号" prop="Phone" ></el-table-column>
@@ -151,6 +152,10 @@
     height: 40px;
     background-color: rgb(72, 175, 249);
     border-color: rgb(72, 175, 249);
+}
+.el-button--default {
+  height: 40px;
+
 }
 </style>
 <script>
@@ -267,7 +272,7 @@
                         debugger
                     }
                  }else{
-                     this.$message({ type: "error", message: crs.Msg });
+                     alert(crs.Msg);
                 }
             },
             getSliderIndex(val){
@@ -363,10 +368,10 @@
                     imgdate:this.currentBaseImg2
                 })
                 if(crs.orsuccess == '1'){
-                    this.$message({ type: "success", message: crs.Msg });
+                    alert(crs.Msg);
                     this.formData.img.push({url:crs.imgFile})
                 }else{
-                    this.$message({ type: "error", message: crs.Msg });
+                    alert(crs.Msg);
                 }
             },
             handleRemove(file, fileList) {

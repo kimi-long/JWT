@@ -119,7 +119,7 @@
       <textarea rows="5" v-model="reviewWord" placeholder="输入评论，最多500个字" maxlength="500"></textarea>
       <span class="btn" @click="addReviewOk">提交</span>
     </div>
-    
+
     <div class="tishiBox" v-if="isPopUpShow">
       </div>
       <div class="tishiContent" v-if="isPopUpShow">
@@ -133,7 +133,7 @@
         <span @click="okOrder">确定</span>
       </div>
     </div>
-  
+
  <div class="tishiBox" v-if="isPopUpqiaodaoShow">
       </div>
       <div class="tishiContent1" v-if="isPopUpqiaodaoShow">
@@ -146,7 +146,7 @@
               <option v-for="items in listvip" :value="items.ID+','+items.CardType">{{items.CardName}}</option>
               </select>
           </div>
-       
+
       </div>
        <div class="tishiContent1-word"  v-if="showbx" >
              <div class="stuSearch1" >
@@ -172,8 +172,8 @@
         <span @click="okOrdernew">确定</span>
       </div>
     </div>
-    
-    
+
+
     <teacher-bottom></teacher-bottom>
     <message ref="messageChild"></message>
   </div>
@@ -199,7 +199,7 @@
         editWord:false,
         ruleFrom:{},
         listStudent:[],//已预约学员
-        listimg:[],//课堂实拍 
+        listimg:[],//课堂实拍
         reviewCourse:[],//课堂评价
         isEditketangPhone:true,
         isEditdianpingPhoneOwner:true,
@@ -255,7 +255,7 @@
           debugger
           this.ruleFrom = crs.data.info;
           this.listStudent = crs.data.listStudent;//已预约学员
-          this.listimg = crs.data.listimg;//课堂实拍 
+          this.listimg = crs.data.listimg;//课堂实拍
           this.Ispush = crs.data.Ispush
            //this.reviewCourse = crs.data.ReviewCourse;//课堂评价
           // 处理电话
@@ -303,9 +303,9 @@
 
       },changeAddress(event){
        // debugger
-          
+
                   let arr1 = event.target.value.split(",");
-                  
+
 
               if(arr1.length > 1){
 
@@ -326,15 +326,15 @@
                 this.showAmount=false;
                 this.showbx =true;
                 }else if(CardType ==4){
- 
+
                 this.showKynumber= false;
-                this.showAmount= true;                
+                this.showAmount= true;
                 this.showbx =false;
 
                 }
 
                   }
-          
+
 
       },
       // 点评
@@ -427,15 +427,15 @@
                 this.showAmount=false;
                 this.showbx =true;
                 }else if(CardType ==4){
- 
+
                 this.showKynumber= false;
-                this.showAmount= true;                
+                this.showAmount= true;
                 this.showbx =false;
 
                 }
                   }
                 }else{
-                    this.$message({ type: "error", message: crs.Msg });
+                    alert(crs.Msg);
                 }
             },
       // 取消
@@ -462,7 +462,7 @@
                         startTime = this.ruleFrom.startTime
 
                     }
-        
+
         const crs = await editStudentStateNew({
            PreAboutID: this.preAboutID,
            state: this.preAboutType,
@@ -543,21 +543,21 @@
       //  debugger
         for(let i=0;i<e.target.files.length;i++){
           var file = e.target.files[i];
-          var reader = new FileReader(); 
-          reader.onload =(e) => { 
-            let data; 
-            if (typeof e.target.result === 'object') { 
-              // 把Array Buffer转化为blob 如果是base64不需要 
-              data = window.URL.createObjectURL([e.target.result]) 
-            } 
-            else { 
-              data = e.target.result 
+          var reader = new FileReader();
+          reader.onload =(e) => {
+            let data;
+            if (typeof e.target.result === 'object') {
+              // 把Array Buffer转化为blob 如果是base64不需要
+              data = window.URL.createObjectURL([e.target.result])
+            }
+            else {
+              data = e.target.result
             }
            // debugger
             // 上传服务器
             this.Uploadimgs(data,type,items)
-          } 
-          reader.readAsDataURL(file) 
+          }
+          reader.readAsDataURL(file)
         }
       },
       // 把base64图片转换
@@ -573,11 +573,11 @@
         if(crs.orsuccess==1){
           if(type == 'dianpingImg'){
             items.dianpingImgList.push({
-              ImgUrl: crs.imgFile 
+              ImgUrl: crs.imgFile
             })
           }else if(type == 'ketangImg'){
             this.listimg.push({
-              ImgUrl: crs.imgFile 
+              ImgUrl: crs.imgFile
             })
           }
           this.$forceUpdate();
@@ -660,7 +660,7 @@
             this.$store.commit('fullLoadingFun',false);
           }
         }
-        
+
       },
       addReviewOk(){
         if(this.isEdit){

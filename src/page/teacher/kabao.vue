@@ -1,8 +1,8 @@
 <template>
   <div class="padding-bottom">
 
-    <div style="margin-bottom:10px;margin-top:10px;;margin-left:10px;">
-      <el-button size="medium" type="primary" v-if="canAdd" @click="addMemberCradClick">添加会员卡</el-button>
+    <div style="margin-bottom:10px;margin-top:10px;;margin-left:10px;height: 40px;">
+      <el-button  style="float: right;margin-right: 10px" size="medium" type="primary" v-if="canAdd" @click="addMemberCradClick"><i class="iconfont icon-jia"></i>  添加会员卡</el-button>
 
     </div>
     <div class="stu-order-list stu-order-list2" v-for="items in MemberCardList">

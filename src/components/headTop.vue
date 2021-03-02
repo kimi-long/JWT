@@ -9,7 +9,7 @@
 <template>
   <div>
     <div class="fix-top">
-      <i class="iconfont icon-zuojiantou" @click="goback" v-if="isActive!=='gzt'&&isActive!=='teaOwner'&&isActive!=='stuOwner'&&isActive!=='stuTeacher'"></i>
+      <i class="iconfont icon-zuojiantou" @click="goback" v-if="isActive!=='gzt'&&isActive!=='teaOwner'&&isActive!=='stuOwner'&&isActive!=='stuTeacher'&&isActive!=='teaOrder'"></i>
       {{title}}
     </div>
   </div>

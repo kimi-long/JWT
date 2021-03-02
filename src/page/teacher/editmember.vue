@@ -28,7 +28,6 @@
                             </el-radio>
                         </el-radio-group>
                     </el-form-item>
-                    </el-form-item>
                     <el-form-item label="出生日期：" prop="Birthday">
                          <el-input  type="date" v-model="ruleForm.Birthday" > </el-input>
 

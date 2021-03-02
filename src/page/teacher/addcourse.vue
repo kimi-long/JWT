@@ -98,9 +98,9 @@
  <el-dialog
       title="选择老师"
       :visible.sync="dialoglaoshiVisible"
-      width="80%"
+      width="100%"
         >
-            <el-table :data="teacherList" ref="tableData" :row-key="(row) => {return row.ID}" :header-cell-style="{'background-color':'#f8f8f8'}" style="width:300px" @selection-change="handleSelectionChange" >
+            <el-table max-height="280" :data="teacherList" ref="tableData" :row-key="(row) => {return row.ID}" :header-cell-style="{'background-color':'#f8f8f8'}" style="width:100%" @selection-change="handleSelectionChange" >
               <el-table-column type="selection" width="55" > </el-table-column>
                  <el-table-column label="老师姓名" prop="Name" ></el-table-column>
                 <el-table-column label="手机号" prop="Phone" ></el-table-column>
@@ -154,6 +154,10 @@
     background-color: rgb(72, 175, 249);
     border-color: rgb(72, 175, 249);
 }
+  .el-button--default {
+    height: 40px;
+
+  }
 </style>
 <script>
   import { AddwxCourse,WXUploadimg,getwxListLevel,getListTeacher } from "@/api/getData";
@@ -315,10 +319,10 @@
                     imgdate:this.currentBaseImg2
                 })
                 if(crs.orsuccess == '1'){
-                    this.$message({ type: "success", message: crs.Msg });
+                    alert(crs.Msg);
                     this.formData.img.push({url:crs.imgFile})
                 }else{
-                    this.$message({ type: "error", message: crs.Msg });
+                    alert(crs.Msg);
                 }
             },
             handleRemove(file, fileList) {

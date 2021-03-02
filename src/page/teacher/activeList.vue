@@ -81,7 +81,7 @@
     <el-dialog
       title="提示"
       :visible.sync="dialogdelVisible"
-      width="80%"
+      width="100%"
       center
     >
       <div class="ant-modal-body1">
@@ -107,10 +107,10 @@
     <el-dialog
       title="修改会员卡"
       :visible.sync="dialohykVisible"
-      width="80%"
+      width="100%"
       center
     >
-      <el-form :model="ruleFormfakaClass" ref="ruleFormfakaClass" :rules="rulesfakaClass" label-width="100px"
+      <el-form :model="ruleFormfakaClass" ref="ruleFormfakaClass" :rules="rulesfakaClass" label-width="96px"
                label-position="right">
         <el-form-item label="会员卡名称：" prop="CardNum">
           <span>{{ruleFormfakaClass.CardName}}</span>
@@ -147,6 +147,10 @@
   </div>
 </template>
 <style scoped>
+  .el-dialog__body {
+    text-align: initial;
+    padding: 25px 15px 30px;
+  }
   .ant-modal-body1 {
     max-height: 70vh;
     overflow-y: auto;
@@ -318,10 +322,10 @@
           }
         })
         let aaa ={name:'续费'};
-        let bbb ={name:'预警'};
-        if(this.canEdit){
-          this.actions.push(aaa);
-        }
+        let bbb ={name:'续费提醒'};
+        // if(this.canEdit){
+        //   this.actions.push(aaa);
+        // }
         if(this.canAdd){
           this.actions.push(bbb);
         }

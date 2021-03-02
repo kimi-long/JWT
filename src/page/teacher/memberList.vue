@@ -9,9 +9,9 @@
 <template>
   <div class="padding-bottom">
 
-    <div style="margin-bottom:10px;margin-top:10px;;margin-left:10px;">
+    <div style="margin-bottom:10px;margin-top:10px;;margin-left:10px;height: 40px">
 
-      <el-button size="medium" type="primary" v-if="canAdd" @click="addMemberClick">添加会员</el-button>
+      <el-button style="float: right;margin-right: 10px" size="medium" type="primary" v-if="canAdd" @click="addMemberClick"><i class="iconfont icon-jia"></i>  添加会员</el-button>
 
     </div>
     <van-dropdown-menu active-color="#4aa1ec">
@@ -111,7 +111,7 @@
     <el-dialog
       title="提示"
       :visible.sync="dialogdelVisible"
-      width="80%"
+      width="100%"
       center
     >
        <span slot="title">
@@ -130,7 +130,7 @@
     <el-dialog
       title="发卡"
       :visible.sync="dialogfkVisible"
-      width="80%"
+      width="100%"
       center
     >
       <el-form :model="ruleFormfakaClass" ref="ruleFormfakaClass" :rules="rulesfakaClass" label-width="100px"
@@ -146,7 +146,7 @@
           <el-input v-model="ruleFormfakaClass.CardNum" placeholder="请输入会员卡号"></el-input>
         </el-form-item>
         <el-form-item label="选择会员卡：" prop="CardID">
-          <el-select v-model="ruleFormfakaClass.CardName" filterable @change="changeCardID" placeholder="请选择会员卡">
+          <el-select v-model="ruleFormfakaClass.CardName"  @change="changeCardID" placeholder="请选择会员卡">
             <el-option v-for="item in MemberCardList" :key="item.index" :label="item.CardName +'/￥'+item.SellingPrice "
                        :value="item.ID+','+item.CardType+','+item.CardName+','+item.Kynumber+','+item.yxdays +','+item.Amount+','+item.SellingPrice">
             </el-option>
@@ -208,7 +208,7 @@
     <message ref="messageChild"></message>
     <van-action-sheet
       v-model="actionshow"
-      :actions="actions"
+      :actions="actionsR"
       cancel-text="取消"
       close-on-click-action
       @select="operation"
@@ -300,6 +300,7 @@
       return {
         actionLine: {},
         actions: [],
+        actionsR: [],
         actionshow: false,
         loading: false,
         finished: false,
@@ -381,6 +382,24 @@
       },
       openAction(item) {
         this.actionshow = true;
+        if(item.listVip.length >0){
+          if(this.canEdit){
+            if(this.canDelete){
+              this.actionsR = [{name: '编辑'},{name: '发卡'},{name: '持表列表'},{name: '删除'}];
+            }else{
+              this.actionsR = [{name: '编辑'},{name: '发卡'},{name: '持表列表'}];
+            }
+          }else {
+            if(this.canDelete){
+              this.actionsR = [{name: '持表列表'},{name: '删除'}];
+            }else {
+              this.actionsR = [{name: '持表列表'}];
+            }
+
+          }
+        }else {
+          this.actionsR = this.actions;
+        }
         this.actionLine = item;
       },
       operation(item) {
@@ -391,6 +410,8 @@
           this.todel(this.actionLine);
         } else if (item.name == '发卡') {
           this.faka(this.actionLine);
+        }else if(item.name == '持表列表'){
+          this.Cardvip(this.actionLine)
         }
       },
       async getListwxMembers() {
@@ -489,9 +510,7 @@
         let aaa = {name: '编辑'};
         let ccc = {name: '发卡'};
         let bbb = {name: '删除'};
-        this.actions.push(bbb);
 
-        this.actions.push(ccc);
         if(this.canEdit){
           this.actions.push(aaa);
           this.actions.push(ccc);

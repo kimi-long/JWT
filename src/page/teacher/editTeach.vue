@@ -244,11 +244,11 @@
                 // debugger
                 // console.log(crs)
                 if(crs.orsuccess == '1'){
-                    this.$message({ type: "success", message: crs.Msg });
+                    alert(crs.Msg);
                     this.ruleForm.HeadUrl = crs.imgFile;
                     this.$refs.avatar.clearFiles();
                 }else{
-                    this.$message({ type: "error", message: crs.Msg });
+                    alert(crs.Msg);
                 }
             }
 

@@ -25,15 +25,17 @@
                         </el-select>
                     </el-form-item>
                     <el-form-item label="会员卡背景：" prop="CardImg">
-                         <div class="circle">
-                            <ul class="circle-ul">
-                             <li v-for="(item) of ListCradImg" :key="item.ID" class="circle-li">
-                                 <div v-on:click="changeList(item.ID)" v-bind:class="{changeBorder:item.ID==ruleForm.CardImg}" value="change!">
-                                    <img :src="item.CradImg" style="width: 180px;height: 100px;padding-top: 5px;margin-left: 7px;cursor:pointer" alt />
-                                </div>
-                            </li>
-                            </ul>
-                        </div>
+                      <div class="circle">
+                        <ul class="circle-ul">
+                          <li v-for="(item) of ListCradImg" :key="item.ID" class="circle-li" style="margin-right: 5px">
+                            <el-radio v-model="radio" :label="item.ID">
+                              <div style="display: inline-block" v-on:click="changeList(item.ID)" v-bind:class="{changeBorder:item.ID==ruleForm.CardImg}" value="change!">
+                                <img :src="item.CradImg" style="width: 32VW;padding-top: 5px;margin-left: 20px;cursor:pointer" alt />
+                              </div>
+                            </el-radio>
+                          </li>
+                        </ul>
+                      </div>
                     </el-form-item>
                     <el-form-item label="可用次数："  v-if="showKynumber" prop="Kynumber" >
                         <el-input v-model="ruleForm.Kynumber" placeholder="可用次数" style="width:100px;"></el-input> 次
@@ -57,11 +59,10 @@
  <el-dialog
       title="选择课程"
       :visible.sync="dialoglaoshiVisible"
-      width="80%"
+      width="100%"
         >
-            <el-table :data="courseList" ref="docTable" :row-key="(row) => {return row.ID}" :header-cell-style="{'background-color':'#f8f8f8'}" style="width:100%;margin-top:10px;" @selection-change="handleSelectionChange" >
+            <el-table max-height="280" :data="courseList" ref="docTable" :row-key="(row) => {return row.ID}" :header-cell-style="{'background-color':'#f8f8f8'}" style="width:100%;margin-top:10px;" @selection-change="handleSelectionChange" >
               <el-table-column type="selection" width="55" > </el-table-column>
-             </el-table-column>
                 <el-table-column label="课程姓名" prop="CourseName" ></el-table-column>
              </el-table>
 
@@ -78,6 +79,10 @@
 </template>
 
 <style>
+  .el-button--default {
+    height: 40px;
+
+  }
 .set-link {
     display: inline-block;
     margin-left: 8px;
@@ -86,21 +91,19 @@
 }
      .circle{
   position: relative;
-  width: 632px;
   left: 1px;
 }
 .circle-ul {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  width: 532px;
   padding: 0;
  }
 .circle-li {
   margin-right: 20px;
   list-style: none;
   margin-bottom: 20px;
-
+  display: contents;
 }
   .login-content{
     font-size: 16px;
@@ -141,6 +144,7 @@
   export default {
     data() {
       return {
+        radio:'',
         isEdit:true,
         showKynumber:true,
         showyxdays:true,
@@ -219,7 +223,7 @@
         if(crs.orsuccess=='1'){
           this.storeList = crs.data;
           this.$store.commit('fullLoadingFun',false);
-
+          this.getListCradImg();
           }else{
           this.$refs.messageChild.toast(crs.Msg)
           this.$store.commit('fullLoadingFun',false);
@@ -289,6 +293,8 @@
                 // console.log(crs)
                 if(crs.orsuccess == '1'){
                     this.ListCradImg = crs.data;
+                    this.radio = this.ListCradImg[0].ID;
+                  this.ruleForm.CardImg = this.ListCradImg[0].ID;
                     if(!this.isEdit){
                         for (let i = 0; i < crs.data.length; i++) {
                         if(i==0){

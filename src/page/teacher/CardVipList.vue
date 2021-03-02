@@ -17,16 +17,18 @@
             </p>
             <p>{{items.SellingPrice}}</p>
           </div>
-
-          <div class="stu-order-list-right-btn isActive" @click="toStuTeacherDetails(items)">
-            <span>编辑</span>
+          <div class="stu-order-list-right-btn isActive" @click="openAction(items)">
+            <span>操作</span>
           </div>
-        <div class="stu-order-list-right-btn isActive" @click="xukaClick(items)">
-            <span>续卡</span>
-          </div>
-           <div class="stu-order-list-right-btn isActive" @click="deleteMemberClick(items.ID)">
-            <span>删除</span>
-          </div>
+          <!--<div class="stu-order-list-right-btn isActive" @click="toStuTeacherDetails(items)">-->
+            <!--<span>编辑</span>-->
+          <!--</div>-->
+        <!--<div class="stu-order-list-right-btn isActive" @click="xukaClick(items)">-->
+            <!--<span>续卡</span>-->
+          <!--</div>-->
+           <!--<div class="stu-order-list-right-btn isActive" @click="deleteMemberClick(items.ID)">-->
+            <!--<span>删除</span>-->
+          <!--</div>-->
 
          </div>
       </div>
@@ -53,38 +55,41 @@
     <el-dialog
       title="修改会员卡"
       :visible.sync="dialohykVisible"
-      width="80%"
+      width="100%"
       center
       >
-           <el-form :model="ruleFormfakaClass" ref="ruleFormfakaClass" :rules="rulesfakaClass" label-width="100px" label-position="right">
-                    <el-form-item label="会员卡名称：" prop="CardNum">
-                      <span>{{ruleFormfakaClass.CardName}}</span>
-                     </el-form-item>
-                     <el-form-item label="是否开卡：" v-if="iskaika=='0'" >
-                             <el-radio-group v-model="ruleFormfakaClass.iskaika" >
-                                <el-radio label="1">立即开卡</el-radio>
-                                <el-radio label="0">暂不开卡</el-radio>
-                            </el-radio-group>
-                    </el-form-item>
-                    <el-form-item label="开卡日期：" v-if="ruleFormfakaClass.iskaika=='1'"  prop="KaiKaTime">
-                        <el-input  type="date" v-model="ruleFormfakaClass.KaiKaTime" @change='selectData2(ruleFormfakaClass)' > </el-input>
-                    </el-form-item>
-                    <el-form-item label="可用次数："  v-if="showKynumber" >
-                        <el-input v-model="ruleFormfakaClass.CardNumber" placeholder="可用次数" style="width:100px;"></el-input> 次
-                    </el-form-item>
-                    <el-form-item label="到期时间："  v-if="showyxdays"  >
-                      <span>{{ruleFormfakaClass.EndTime}}</span>
-                     </el-form-item>
-                    <el-form-item label="有效天数："  v-if="showyxdays"  prop="CardDays" >
-                        <el-input v-model="ruleFormfakaClass.CardDays" v-on:input="inputSubtotal1(ruleFormfakaClass)" placeholder="有效天数" style="width:100px;"></el-input> 天
-                    </el-form-item>
-                    <el-form-item label="充值金额："  v-if="showAmount">
-                        <el-input v-model="ruleFormfakaClass.Amount" placeholder="充值金额" style="width:100px;"></el-input> 元
-                    </el-form-item>
-                    <el-form-item label="备注信息：" >
-                       <el-input type="textarea" v-model="ruleFormfakaClass.Note"></el-input>
-                    </el-form-item>
-                </el-form>
+      <div style="height: 280px;overflow-y: auto">
+        <el-form :model="ruleFormfakaClass" ref="ruleFormfakaClass" :rules="rulesfakaClass" label-width="100px" label-position="top">
+          <el-form-item label="会员卡名称：" prop="CardNum">
+            <span>{{ruleFormfakaClass.CardName}}</span>
+          </el-form-item>
+          <el-form-item label="是否开卡：" v-if="iskaika=='0'" >
+            <el-radio-group v-model="ruleFormfakaClass.iskaika" >
+              <el-radio label="1">立即开卡</el-radio>
+              <el-radio label="0">暂不开卡</el-radio>
+            </el-radio-group>
+          </el-form-item>
+          <el-form-item label="开卡日期：" v-if="ruleFormfakaClass.iskaika=='1'"  prop="KaiKaTime">
+            <el-input  type="date" v-model="ruleFormfakaClass.KaiKaTime" @change='selectData2(ruleFormfakaClass)' > </el-input>
+          </el-form-item>
+          <el-form-item label="可用次数："  v-if="showKynumber" >
+            <el-input v-model="ruleFormfakaClass.CardNumber" placeholder="可用次数" style="width:100px;"></el-input> 次
+          </el-form-item>
+          <el-form-item label="到期时间："  v-if="showyxdays"  >
+            <span>{{ruleFormfakaClass.EndTime}}</span>
+          </el-form-item>
+          <el-form-item label="有效天数："  v-if="showyxdays"  prop="CardDays" >
+            <el-input v-model="ruleFormfakaClass.CardDays" v-on:input="inputSubtotal1(ruleFormfakaClass)" placeholder="有效天数" style="width:100px;"></el-input> 天
+          </el-form-item>
+          <el-form-item label="充值金额："  v-if="showAmount">
+            <el-input v-model="ruleFormfakaClass.Amount" placeholder="充值金额" style="width:100px;"></el-input> 元
+          </el-form-item>
+          <el-form-item label="备注信息：" >
+            <el-input type="textarea" v-model="ruleFormfakaClass.Note"></el-input>
+          </el-form-item>
+        </el-form>
+      </div>
+
        <span slot="footer" class="dialog-footer">
         <el-button size="medium" @click="dialohykVisible = false">取 消</el-button>
         <el-button size="medium" type="primary" @click="submithyk">确 认</el-button>
@@ -93,10 +98,10 @@
     <el-dialog
       title="续卡"
       :visible.sync="dialohxkVisible"
-      width="80%"
+      width="100%"
       center
       >
-           <el-form :model="ruleFormxukaClass" ref="ruleFormxukaClass" :rules="rulesxukaClass" label-width="100px" label-position="right">
+           <el-form :model="ruleFormxukaClass" ref="ruleFormxukaClass" :rules="rulesxukaClass" label-width="100px" label-position="top">
                     <el-form-item label="会员卡：" >
                        <span>{{ruleFormxukaClass.CardName}}</span>
                     </el-form-item>
@@ -133,7 +138,13 @@
       </span>
     </el-dialog>
             <message ref="messageChild"></message>
-
+    <van-action-sheet
+      v-model="actionshow"
+      :actions="actions"
+      cancel-text="取消"
+      close-on-click-action
+      @select="operation"
+    />
    </div>
 </template>
 <style scoped>
@@ -156,6 +167,9 @@
   export default {
      data () {
       return {
+          actionLine: {},
+          actionshow: false,
+          actions: [{name: '编辑'},{name:'续卡'}, {name: '删除'}],
           MemberCardList:[],
           dialogdelVisible:false,
           dialohykVisible:false,
@@ -224,6 +238,20 @@
         this.getwxListMembersvip();
    },
     methods:{
+      operation(item) {
+
+        if(item.name == '编辑'){
+          this.toStuTeacherDetails(this.actionLine);
+        }else if(item.name == '删除'){
+          this.deleteMemberClick(this.actionLine.ID);
+        }else if(item.name == '续卡'){
+          this.xukaClick(this.actionLine);
+        }
+      },
+      openAction(item) {
+        this.actionshow = true;
+        this.actionLine = item;
+      },
       async getwxListMembersvip(){
               const crs = await getwxListMembersvip(
                   {
@@ -236,7 +264,7 @@
                   }else
                      {
 
-                    this.$message({ type: "error", message: crs.Msg });
+                    alert(crs.Msg);
 
                      }
 
@@ -390,7 +418,7 @@
                      this.dialohxkVisible = true;
 
                  }else{
-                    this.$message({ type: "error", message: crs.Msg });
+                    alert(crs.Msg);
                 }
             },inputSubtotal4(val){
 

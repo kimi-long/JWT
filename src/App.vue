@@ -8,7 +8,7 @@
  -->
 <template>
   <div id="app">
-	  <head-top v-if="this.$route.name!= 'gzt'&&this.$route.name!= 'login'
+	  <head-top v-if="this.$route.name!= 'gzt'&&this.$route.name!= 'teaOrder'&&this.$route.name!= 'login'
     &&this.$route.name!= 'dianPingPage'&&this.$route.name!= 'stuIndex'"></head-top>
     <router-view v-if="isRouterAlive"/>
     <lg-preview></lg-preview>
@@ -21,6 +21,13 @@
     </div>
   </div>
 </template>
+<!--<style lang="scss">-->
+  <!--.el-scrollbar {-->
+    <!--&gt; .el-scrollbar__bar {-->
+      <!--opacity: 1 !important;-->
+    <!--}-->
+  <!--}-->
+<!--</style>-->
 <style scoped>
 .loading-container{
   position: relative;

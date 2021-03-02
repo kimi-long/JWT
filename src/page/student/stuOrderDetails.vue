@@ -29,7 +29,7 @@
     <div class="studetails-xiwei">
        <div class="touxiang">
           <img :src="item.WxHeadUrl"  v-for="(item, index) in listMUrl" :key="index" class="touxiang"/>
-  
+
         </div>
       <span v-if="htRowClass.RowClassType== '0'">{{htRowClass.PreAboutCount}}人/{{htRowClass.limitCount}}席</span>
     </div>
@@ -94,14 +94,14 @@
               <option v-for="items in listRowClassTime" :value="items.ID">{{items.startTime}} ~  {{items.endTime}}</option>
               </select>
           </div>
-       
+
       </div>
       <div class="isSure-btn mybot">
         <span @click="cancelPopUp">取消</span>
         <span @click="okOrder">确定</span>
       </div>
      </div>
-     
+
     <message ref="messageChild"></message>
   </div>
 </template>
@@ -126,8 +126,8 @@
         htRowClass:{},  //课时详情
         htCourse:{},   //课程详情
         listImg:[],  //轮播图
-        listRowClassTime:[], 
-        listMUrl:[], 
+        listRowClassTime:[],
+        listMUrl:[],
         isState:"",
         RowClassTimeID:"0",
         swiperOption: {
@@ -204,7 +204,7 @@
          this.isPopUpShow = true;
 
         }
-   
+
       },changeAddress(event){
            this.RowClassTimeID  = event.target.value;
 
@@ -215,7 +215,7 @@
                 })
             //    debugger
                 if(crs.orsuccess == '1'){
-                    // this.$message({ type: "success", message: crs.Msg });
+                    // alert(crs.Msg);
                     this.listRowClassTime = crs.data;
 
                      if(this.listRowClassTime.length>0){
@@ -224,7 +224,7 @@
                     this.isPopUpShownew = true;
 
                 }else{
-                    this.$message({ type: "error", message: crs.Msg });
+                    alert(crs.Msg);
                 }
             },
       cancelPopUp(){
@@ -285,7 +285,7 @@
     },
   }
 </script>
- 
+
 <style scoped>
  .swiper-image{
    width: 100%;
@@ -353,14 +353,14 @@
   }
 
   .mybot{margin-top: 20px;}
-  
+
 .stuSearch2 select{
     font-size: 14px;
     background-color: transparent;
     color: #979797;
     text-align: center;
     text-align-last: center;
-    margin-top: 5px; 
+    margin-top: 5px;
     height: 25px;
     width: 100%;
     background: none;

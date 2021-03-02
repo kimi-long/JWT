@@ -27,10 +27,12 @@
                     <el-form-item label="会员卡背景：" prop="CardImg">
                          <div class="circle">
                             <ul class="circle-ul">
-                             <li v-for="(item) of ListCradImg" :key="item.ID" class="circle-li">
-                                 <div v-on:click="changeList(item.ID)" v-bind:class="{changeBorder:item.ID==ruleForm.CardImg}" value="change!">
-                                    <img :src="item.CradImg" style="width: 180px;height: 100px;padding-top: 5px;margin-left: 7px;cursor:pointer" alt />
-                                </div>
+                             <li v-for="(item) of ListCradImg" :key="item.ID" class="circle-li" style="margin-right: 5px">
+                               <el-radio v-model="radio" :label="item.ID">
+                                 <div style="display: inline-block" v-on:click="changeList(item.ID)" v-bind:class="{changeBorder:item.ID==ruleForm.CardImg}" value="change!">
+                                   <img :src="item.CradImg" style="width: 32VW;padding-top: 5px;margin-left: 20px;cursor:pointer" alt />
+                                 </div>
+                               </el-radio>
                             </li>
                             </ul>
                         </div>
@@ -58,11 +60,10 @@
   <el-dialog
       title="选择课程"
       :visible.sync="dialoglaoshiVisible"
-      width="80%"
+      width="100%"
         >
-            <el-table :data="courseList" ref="docTable" :row-key="(row) => {return row.ID}" :header-cell-style="{'background-color':'#f8f8f8'}" style="width:100%;margin-top:10px;" @selection-change="handleSelectionChange" >
+            <el-table max-height="280" :data="courseList" ref="docTable" :row-key="(row) => {return row.ID}" :header-cell-style="{'background-color':'#f8f8f8'}" style="width:100%;margin-top:10px;" @selection-change="handleSelectionChange" >
               <el-table-column type="selection" width="55" > </el-table-column>
-             </el-table-column>
                 <el-table-column label="课程姓名" prop="CourseName" ></el-table-column>
              </el-table>
 
@@ -78,6 +79,17 @@
   </div>
 </template>
 <style>
+  .el-button--default {
+    height: 40px;
+
+  }
+  .el-radio__input{
+    margin-left: 20px;
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    transform: translateY(-50%);
+  }
 .set-link {
     display: inline-block;
     margin-left: 8px;
@@ -86,21 +98,20 @@
 }
      .circle{
   position: relative;
-  width: 632px;
   left: 1px;
 }
 .circle-ul {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
-  width: 532px;
   padding: 0;
  }
 .circle-li {
   margin-right: 20px;
   list-style: none;
   margin-bottom: 20px;
-
+  display: contents;
+  position: relative;
 }
   .login-content{
     font-size: 16px;
@@ -142,6 +153,7 @@
   export default {
     data() {
       return {
+        radio:0,
         isEdit:true,
         showKynumber:true,
         showyxdays:true,
@@ -226,7 +238,9 @@
           this.$store.commit('fullLoadingFun',false);
         }
       }, async getListCradImg (){
-                const crs = await getListCradImg()
+                const crs = await getListCradImg(
+                  {StoresID:localStorage.getItem("storesid")}
+                )
                 // console.log(crs)
                 if(crs.orsuccess == '1'){
                     this.ListCradImg = crs.data;
@@ -269,10 +283,11 @@
                 }
 
                 this.ruleForm = crs.data;
+                  this.radio = crs.data.CardImg;
                           this.$store.commit('fullLoadingFun',false);
 
                 }else{
-                    this.$message({ type: "error", message: crs.Msg });
+                    alert(crs.Msg);
                               this.$store.commit('fullLoadingFun',false);
 
                 }
